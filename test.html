@@ -3,51 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lenis Scroll Test</title>
+  <title>Three.js with Tailwind</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      overflow: visible; /* Ensure scrolling is not blocked */
     }
-    section {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-    }
-    section:nth-child(odd) {
-      background: #1e293b;
-      color: #fff;
-    }
-    section:nth-child(even) {
-      background: #f3f4f6;
+
+    canvas {
+      display: block;
     }
   </style>
 </head>
-<body>
-  <section>Section 1</section>
-  <section>Section 2</section>
-  <section>Section 3</section>
-  <section>Section 4</section>
+<body class="bg-gray-900 text-white">
 
-  <!-- Lenis Script -->
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest/bundle.js"></script>
+  <section class="h-screen w-screen">
+    <div class="relative w-full h-full">
+      <canvas class="three-canvas" data-engine="three.js r162"></canvas>
+    </div>
+  </section>
+
+  <section class="h-screen flex items-center justify-center">
+    <h1 class="text-4xl font-bold">Scroll Down for Smooth Effects</h1>
+  </section>
+
+  <section class="h-screen bg-gray-700 flex items-center justify-center">
+    <h1 class="text-4xl font-bold">Another Section</h1>
+  </section>
+
   <script>
-    // Initialize Lenis
-    const lenis = new Lenis({
-      duration: 1.2, // Adjust scroll duration
-      easing: (t) => 1 - Math.pow(1 - t, 3), // Smooth easing
-      smooth: true, // Enable smooth scrolling
+    // Initialize Three.js
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('threeCanvas'), antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    // Add a cube
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    // Camera and controls
+    camera.position.z = 5;
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+    // Handle resizing
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    // Animation Frame for Lenis
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      controls.update();
+      renderer.render(scene, camera);
     }
-    requestAnimationFrame(raf);
+    animate();
   </script>
 </body>
 </html>
