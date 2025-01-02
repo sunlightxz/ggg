@@ -7,10 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Set initial positions for the floating elements
-  const spans = document.querySelectorAll(".groupx span");
-  const paperBall = document.querySelector(".groupx img");
-  const imagesection2 = document.querySelector("#image-section2");
+
 
   const contentElements = {
     topText: document.querySelector(".font-manrope.text-primary"),
@@ -20,20 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     buttons: document.querySelectorAll(".flex.flex-col.sm\\:flex-row a"),
   };
 
-  // Initialize floating elements positions
-  spans.forEach((span, index) => {
-    const randomX = Math.random() * window.innerWidth;
-    const randomY = Math.random() * window.innerHeight;
-    gsap.set(span, {
-      x: randomX,
-      y: randomY,
-      opacity: 0,
-      scale: 0,
-    });
-  });
 
-  // Set initial states
-  gsap.set(paperBall, { opacity: 0, scale: 0, rotation: -180 });
   gsap.set(
     [
       contentElements.topText,
@@ -48,56 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Create main timeline
   const mainTl = gsap.timeline({
     defaults: { ease: "power3.out" },
-  });
-
-  // Animate floating elements
-  spans.forEach((span, index) => {
-    mainTl.to(
-      span,
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        delay: index * 0.2,
-      },
-      index * 0.1
-    );
-
-    // Add continuous floating animation
-    gsap.to(span, {
-      y: `random(-100, 100)`,
-      x: `random(-100, 100)`,
-      rotation: `random(-180, 180)`,
-      duration: `random(10, 20)`,
-      repeat: -1,
-      yoyo: true,
-      ease: "none",
-      delay: index * 0.5,
-    });
-  });
-
-  // Animate paper ball
-  mainTl.to(
-    paperBall,
-    {
-      opacity: 1,
-      scale: 1,
-      rotation: 0,
-      duration: 1.5,
-      ease: "elastic.out(1, 0.5)",
-    },
-    0.5
-  );
-
-  // Add continuous floating animation to paper ball
-  gsap.to(paperBall, {
-    y: "random(-30, 30)",
-    x: "random(-30, 30)",
-    rotation: "random(-15, 15)",
-    duration: 5,
-    repeat: -1,
-    yoyo: true,
-    ease: "sine.inOut",
   });
 
   // Animate content elements
@@ -170,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
 
-  
 
   document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger);
@@ -246,182 +179,353 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //about section
 document.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-  const contimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#about-content",
-      start: "top bottom",
-      end: "bottom bottom-=100",
-      scrub: 2,
-      // Removed pin: true to prevent the pinning effect
-    },
-  });
+const contimeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#about-content",
+    start: "top bottom",
+    end: "bottom bottom-=100",
+    scrub: 2,
+    // Removed pin: true to prevent the pinning effect
+  },
+});
 
-  // Content animations remain the same
-  contimeline
-    .from("#about-subhead", {
-      opacity: 0,
-      x: -100,
-      duration: 0.5,
-    })
-    .from("#about-title", {
-      opacity: 0,
-      x: -100,
-      duration: 0.5,
-    })
-    .from("#about-p", {
-      opacity: 0,
-      x: -100,
-      duration: 1,
-    }, "-=0.3")
-    .from("#about-check", {
-      opacity: 0,
-      x: -100,
-      duration: 1,
-    }, "-=0.3")
-    .from("#about-btn", {
-      opacity: 0,
-      x: -100,
-      duration: 1,
-    }, "-=1.3");
+// Content animations remain the same
+contimeline
+  .from("#about-subhead", {
+    opacity: 0,
+    x: -100,
+    duration: 0.5,
+  })
+  .from("#about-title", {
+    opacity: 0,
+    x: -100,
+    duration: 0.5,
+  })
+  .from("#about-p", {
+    opacity: 0,
+    x: -100,
+    duration: 1,
+  }, "-=0.3")
+  .from("#about-check", {
+    opacity: 0,
+    x: -100,
+    duration: 1,
+  }, "-=0.3")
+  .from("#about-btn", {
+    opacity: 0,
+    x: -100,
+    duration: 1,
+  }, "-=1.3");
 
-  const visualTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#about-visual",
-      start: "top bottom",
-      end: "bottom bottom-=100",
-      scrub: 2,
-      // Removed pin: true to prevent the pinning effect
-    },
-  });
+const visualTimeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#about-visual",
+    start: "top bottom",
+    end: "bottom bottom-=100",
+    scrub: 2,
+    // Removed pin: true to prevent the pinning effect
+  },
+});
 
-  visualTimeline
-    .from("#lg-about", {
+visualTimeline
+  .from("#lg-about", {
+    scale: 0.3,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+  })
+  .from(
+    "#img-about",
+    {
       scale: 0.3,
       opacity: 0,
-      duration: 1,
+      duration: 1.4,
       ease: "power2.out",
-    })
-    .from(
-      "#img-about",
-      {
-        scale: 0.3,
-        opacity: 0,
-        duration: 1.4,
-        ease: "power2.out",
-        x: -200,
-      }
-    )
-    .from(
-      "#smimg-about",
-      {
-        scale: 0.3,
-        opacity: 0,
-        duration: 1.4,
-        ease: "power2.out",
-        x: -100,
-      },
-      "-=1"
-    );
+      x: -200,
+    }
+  )
+  .from(
+    "#smimg-about",
+    {
+      scale: 0.3,
+      opacity: 0,
+      duration: 1.4,
+      ease: "power2.out",
+      x: -100,
+    },
+    "-=1"
+  );
 });
 
 //service section
 document.addEventListener('DOMContentLoaded', () => {
+    gsap.registerPlugin(ScrollTrigger);
+  
+    // Quick fade-in to ensure visibility
+    gsap.fromTo(".services-section", { opacity: 0 }, { opacity: 1, duration: 0.3 });
+  
+    // Header animations
+    const servicesHeaderTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".services-section",
+        start: "top 90%",
+        end: "top 10%",
+        toggleActions: "play none none reverse",
+      },
+    });
+  
+    servicesHeaderTl
+      .from(".services-section .subhead, .services-header h2, .services-header p", {
+        y: 30,
+        opacity: 0,
+        stagger: 0.2,
+      });
+  
+    // Section scaling animation
+    const sectionScaleTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".services-section",
+        start: "top 90%",
+        end: "top top",
+        scrub: 2,
+      },
+    });
+  
+ 
+  
+   
+    
+});
+//vision section
+document.addEventListener('DOMContentLoaded', function () {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Header animations
-  const servicesHeaderTl = gsap.timeline({
+  // GSAP Animations only for larger screens (larger than 768px)
+  if (window.innerWidth >= 768) {  // md breakpoint (768px)
+      // Initial section animation with background effect
+      const sectionTL = gsap.timeline({
+          scrollTrigger: {
+              trigger: '.award-section',
+              start: 'top 80%',
+              end: 'bottom center',
+              toggleActions: "play none none reverse"
+          }
+      });
+
+      sectionTL
+          .from('.award-section', {
+              opacity: 0,
+              duration: 1,
+              ease: "power3.out"
+          })
+          .from('.award-section .bg-gradient', {
+              opacity: 0,
+              scale: 1.2,
+              duration: 1.5,
+              ease: "power2.out"
+          }, "-=0.5");
+
+      // Enhanced animation for card 1
+      gsap.from('.award-card.one', {
+          scrollTrigger: {
+              trigger: '.award-section',
+              start: 'top 70%',
+              end: 'bottom center',
+              toggleActions: "play none none reverse"
+          },
+          opacity: 0,
+          x: -100,
+          y: 50,
+          rotation: -5,
+          duration: 1.2,
+          ease: "back.out(1.7)"
+      });
+
+      // Enhanced animation for card 2
+      gsap.to('.award-card.two', {
+          scrollTrigger: {
+              trigger: '.award-section',
+              start: 'top-=5% top',
+              end: '60% bottom',
+              scrub: 1,
+          },
+          x: '-105.2%',
+          rotation: 2,
+          ease: 'none',
+      });
+
+      // Enhanced animation for card 3
+      gsap.to('.award-card.three', {
+          scrollTrigger: {
+              trigger: '.award-section',
+              start: 'top top',
+              end: 'bottom bottom',
+              scrub: 1,
+          },
+          x: '-205.5%',
+          rotation: -2,
+          ease: 'none',
+      });
+
+      // Enhanced hover animations for award cards
+      document.querySelectorAll('.award-card').forEach(card => {
+          const cardContent = card.querySelectorAll('h3, p, img, svg');
+          
+          card.addEventListener('mouseenter', () => {
+              gsap.to(card, {
+                  y: -15,
+                  scale: 1.03,
+                  rotation: 0,
+                  duration: 0.4,
+                  ease: "power2.out",
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
+              });
+
+              gsap.to(cardContent, {
+                  y: -5,
+                  duration: 0.3,
+                  stagger: 0.05,
+                  ease: "power2.out"
+              });
+          });
+
+          card.addEventListener('mouseleave', () => {
+              gsap.to(card, {
+                  y: 0,
+                  scale: 1,
+                  rotation: card.classList.contains('two') ? 2 : 
+                           card.classList.contains('three') ? -2 : 0,
+                  duration: 0.4,
+                  ease: "power2.inOut",
+                  boxShadow: "0 0 0 rgba(0,0,0,0)"
+              });
+
+              gsap.to(cardContent, {
+                  y: 0,
+                  duration: 0.3,
+                  stagger: 0.02,
+                  ease: "power2.inOut"
+              });
+          });
+      });
+
+      // Enhanced content animations
+      gsap.from('.award-card h3', {
+          scrollTrigger: {
+              trigger: '.award-section',
+              start: 'top 70%',
+              toggleActions: "play none none reverse"
+          },
+          opacity: 0,
+          y: 30,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out"
+      });
+
+      gsap.from('.award-card p', {
+          scrollTrigger: {
+              trigger: '.award-section',
+              start: 'top 70%',
+              toggleActions: "play none none reverse"
+          },
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          stagger: 0.3,
+          ease: "power2.out"
+      });
+
+      // Enhanced icon animations
+      gsap.from('.award-card img, .award-card svg', {
+          scrollTrigger: {
+              trigger: '.award-section',
+              start: 'top 70%',
+              toggleActions: "play none none reverse"
+          },
+          opacity: 0,
+          scale: 0,
+          rotation: 180,
+          duration: 1.2,
+          stagger: 0.2,
+          ease: "back.out(1.7)"
+      });
+
+  } else {
+      // Enhanced mobile animations
+      const mobileTL = gsap.timeline({
+          scrollTrigger: {
+              trigger: '.award-section',
+              start: 'top 80%',
+              toggleActions: "play none none reverse"
+          }
+      });
+
+      mobileTL
+          .from('.award-section', {
+              opacity: 0,
+              duration: 0.8
+          })
+          .from('.award-card', {
+              opacity: 0,
+              y: 50,
+              duration: 0.8,
+              stagger: 0.2,
+              ease: "power2.out"
+          })
+          .from('.award-card img, .award-card svg', {
+              opacity: 0,
+              scale: 0,
+              duration: 0.6,
+              stagger: 0.1,
+              ease: "back.out(1.7)"
+          }, "-=0.4")
+          .from('.award-card h3, .award-card p', {
+              opacity: 0,
+              y: 20,
+              duration: 0.6,
+              stagger: 0.1,
+              ease: "power2.out"
+          }, "-=0.4");
+  }
+  const visionTimeline = gsap.timeline({
     scrollTrigger: {
-      trigger: ".services-section",
-      start: "top 80%",
-      end: "top 20%",
-      toggleActions: "play none none reverse",
-    },
-  });
-
-  servicesHeaderTl
-    .from('.services-section .subhead', {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out",
-    })
-    .from('.services-section .services-header h2', {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-    }, "-=0.3")
-    .from('.services-section .services-header p', {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out",
-    }, "-=0.3");
-
-  // Section scale animation
-  const sectionScaleTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".services-section",
-      start: "top 80%",
-      end: "top top",
-      scrub :2 ,
-      toggleActions: "play none none reverse",
-    },
-  });
-
-  sectionScaleTl.fromTo(
-    ".services-section",
-    { scale: 0.9, opacity: 0.8  },
-    { scale: 1, opacity: 1, duration: 0.8, ease: "power2.out" }
-  );
-
-  // Cards animation on scroll
-  const cardsTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".services-swiper",
-      start: "top 90%",
-      end: "top 20%",
-      toggleActions: "play none none reverse",
-    },
-  });
-
-  cardsTimeline
-    .from(".slides .service-icon", {
-      scale: 0,
-      rotation: -180,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: "back.out(1.7)",
-    })
-    .from(".slides h3", {
-      y: 20,
-      opacity: 0,
-      duration: 0.4,
-      ease: "power3.out",
-    }, "-=0.2")
-    .from(".slides p", {
-      y: 20,
-      opacity: 0,
-      duration: 0.4,
-      ease: "power3.out",
-    }, "-=0.2")
-    .from(".slides .card-arrow", {
-      opacity: 0,
-      duration: 0.4,
-      ease: "power3.out",
-    }, "-=0.2")
-    .from(".nvbtn", {
-      y: 20,
-      opacity: 0,
-      duration: 0.4,
-      ease: "power3.out",
-    }, "-=0.2");
+        trigger: ".award-section",
+        start: "top 70%",
+        // markers: true, // Enable for debugging
+    }
 });
 
+// Animate the left side content
+visionTimeline
+    .from(".award-content .subhead", {
+        opacity: 0,
+        x: -50,
+        duration: 1,
+        ease: "power3.out"
+    })
+    .from(".award-content h1", {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        ease: "power3.out"
+    }, "-=0.7")
+    .from(".award-content p", {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: "power3.out"
+    }, "-=0.7")
+    .from(".award-content button", {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: "power3.out"
+    }, "-=0.5");
 
+});
 
 //course section
 
@@ -486,181 +590,204 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
 //vision section
 document.addEventListener('DOMContentLoaded', function () {
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-  // GSAP Animations only for larger screens (larger than 768px)
-  if (window.innerWidth >= 768) {  // md breakpoint (768px)
-    // Animation for card 2
-     // Timeline for card 2
-  gsap.to('.award-card.two', {
-    scrollTrigger: {
-      trigger: '.award-section',
-      start: 'top-=5% top', // Starts at the top of the section
-      end: '60% bottom', // Ends halfway through the section
-      scrub: 1,
-    },
-    x: '-105.2%', // Moves the card to the left
-    ease: 'none',
-  });
+// GSAP Animations only for larger screens (larger than 768px)
+if (window.innerWidth >= 768) {  // md breakpoint (768px)
+  // Animation for card 2
+   // Timeline for card 2
+gsap.to('.award-card.two', {
+  scrollTrigger: {
+    trigger: '.award-section',
+    start: 'top-=5% top', // Starts at the top of the section
+    end: '60% bottom', // Ends halfway through the section
+    scrub: 1,
+  },
+  x: '-105.2%', // Moves the card to the left
+  ease: 'none',
+});
 
-  // Timeline for card 3
-  gsap.to('.award-card.three', {
-    scrollTrigger: {
-      trigger: '.award-section',
-      start: 'top top', // Starts when card 2 animation is halfway done
-      end: 'bottom bottom', // Ends at the bottom of the section
-      scrub: 1,
-    },
-    x: '-205.5%', // Moves the card further to the left
-    ease: 'none',
-  });
-  }
+// Timeline for card 3
+gsap.to('.award-card.three', {
+  scrollTrigger: {
+    trigger: '.award-section',
+    start: 'top top', // Starts when card 2 animation is halfway done
+    end: 'bottom bottom', // Ends at the bottom of the section
+    scrub: 1,
+  },
+  x: '-205.5%', // Moves the card further to the left
+  ease: 'none',
+});
+}
 });
 
 
 //vision 2
 document.addEventListener('DOMContentLoaded', () => {
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-    // Header animations
-    const visionHeaderTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".vision-section",
-        start: "top 80%",
-        end: "top 20%",
-      }
-    });
+  // Header animations
+  const visionHeaderTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".vision-section",
+      start: "top 80%",
+      end: "top 20%",
+    }
+  });
 
-    visionHeaderTl
-      .from('.vision-section .subhead', {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power3.out"
-      })
-      .from('.vision-section .visionx-header h2', {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out"
-      }, "-=0.3")
-      .from('.vision-section .visionx-header p', {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power3.out"
-      }, "-=0.3");
+  visionHeaderTl
+    .from('.vision-section .subhead', {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      ease: "power3.out"
+    })
+    .from('.vision-section .visionx-header h2', {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    }, "-=0.3")
+    .from('.vision-section .visionx-header p', {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      ease: "power3.out"
+    }, "-=0.3");
 
-   
+ 
 });
 
 
 
 //nam nam
 document.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-  // Animation for the left section (image + notification)
-  gsap.from("#left-section", {
-    scrollTrigger: {
-      trigger: "#how-it-works",
-      start: "top 80%", // Animation triggers when the section enters 80% of the viewport
-      end: "bottom top",
-      toggleActions: "play none none reverse",
-    },
-    x: -100, // Start position
-    opacity: 0, // Start with invisible
-    duration: 1.3,
-    ease: "power2.out",
-  });
-  
-  // Animation for the heading
-  gsap.from("#main-heading", {
-    scrollTrigger: {
-      trigger: "#main-heading",
-      start: "top 90%",
-      toggleActions: "play none none reverse",
-    },
-    y: 50,
-    opacity: 0,
-    duration: 0.8,
-    ease: "power2.out",
-  });
-  
-  // Animation for each step card
-  gsap.from(".step-card", {
-    scrollTrigger: {
-      trigger: "#steps-container",
-      start: "top 80%",
-      toggleActions: "play none none reverse",
-    },
-    y: 100,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.2, // Delay between each card
-    ease: "power2.out",
-  });
-  gsap.from("#notification-box", {
-    scrollTrigger: {
-      trigger: "#how-it-works",
-      start: "top 80%",
-      toggleActions: "play none none reverse",
-    },
-    x: 100,
-    opacity: 0,
-    duration: 1.5,
-    stagger: 0.2, // Delay between each card
-    ease: "power2.out",
-    scale: 0.4 ,
-  });
+// Animation for the left section (image + notification)
+gsap.from("#left-section", {
+  scrollTrigger: {
+    trigger: "#how-it-works",
+    start: "top 80%", // Animation triggers when the section enters 80% of the viewport
+    end: "bottom top",
+    toggleActions: "play none none reverse",
+  },
+  x: -100, // Start position
+  opacity: 0, // Start with invisible
+  duration: 1.3,
+  ease: "power2.out",
+});
+
+// Animation for the heading
+gsap.from("#main-heading", {
+  scrollTrigger: {
+    trigger: "#main-heading",
+    start: "top 90%",
+    toggleActions: "play none none reverse",
+  },
+  y: 50,
+  opacity: 0,
+  duration: 0.8,
+  ease: "power2.out",
+});
+
+// Animation for each step card
+gsap.from("#step-1", {
+  scrollTrigger: {
+    trigger: "#steps-container",
+    start: "top 90%",
+    toggleActions: "play none none reverse",
+  },
+  y: 100,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.2, // Delay between each card
+  ease: "power2.out",
+});
+gsap.from("#step-2", {
+  scrollTrigger: {
+    trigger: "#steps-container",
+    start: "top 90%",
+    toggleActions: "play none none reverse",
+  },
+  y: 0,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.2, // Delay between each card
+  ease: "power2.out",
+});
+gsap.from("#step-3", {
+  scrollTrigger: {
+    trigger: "#steps-container",
+    start: "top 90%",
+    toggleActions: "play none none reverse",
+  },
+  y: -100,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.2, // Delay between each card
+  ease: "power2.out",
+});
+gsap.from("#notification-box", {
+  scrollTrigger: {
+    trigger: "#how-it-works",
+    start: "top 80%",
+    toggleActions: "play none none reverse",
+  },
+  x: 100,
+  opacity: 0,
+  duration: 1.5,
+  stagger: 0.2, // Delay between each card
+  ease: "power2.out",
+  scale: 0.4 ,
+});
 });
 
 
 //faq
 
 document.addEventListener("DOMContentLoaded",()=> {
-  // Ensure GSAP and ScrollTrigger are loaded
+// Ensure GSAP and ScrollTrigger are loaded
 gsap.registerPlugin(ScrollTrigger);
 
 // FAQ Section Animation
 gsap.from("#faq-heading", {
-  scrollTrigger: {
-    trigger: "#faq-section",
-    start: "top 80%", // Animation triggers when the section enters 80% of the viewport
-    toggleActions: "play none none reverse",
-  },
-  y: -50, // Slides down
-  opacity: 0, // Starts invisible
-  duration: 1,
-  ease: "power2.out",
+scrollTrigger: {
+  trigger: "#faq-section",
+  start: "top 80%", // Animation triggers when the section enters 80% of the viewport
+  toggleActions: "play none none reverse",
+},
+y: -50, // Slides down
+opacity: 0, // Starts invisible
+duration: 1,
+ease: "power2.out",
 });
 
 gsap.from("#faq-container", {
-  scrollTrigger: {
-    trigger: "#faq-section",
-    start: "top 80%",
-    toggleActions: "play none none reverse",
-  },
-  x: -100, // Slides in from the left
-  opacity: 0,
-  duration: 1.2,
-  ease: "power2.out",
+scrollTrigger: {
+  trigger: "#faq-section",
+  start: "top 80%",
+  toggleActions: "play none none reverse",
+},
+x: -100, // Slides in from the left
+opacity: 0,
+duration: 1.2,
+ease: "power2.out",
 });
 
 gsap.from("#faq-image img", {
-  scrollTrigger: {
-    trigger: "#faq-section",
-    start: "top 80%",
-    toggleActions: "play none none reverse",
-  },
-  x: 100, // Slides in from the right
-  opacity: 0,
-  duration: 1.2,
-  ease: "power2.out",
-  delay: 0.3, // Slight delay to sync with the content
+scrollTrigger: {
+  trigger: "#faq-section",
+  start: "top 80%",
+  toggleActions: "play none none reverse",
+},
+x: 100, // Slides in from the right
+opacity: 0,
+duration: 1.2,
+ease: "power2.out",
+delay: 0.3, // Slight delay to sync with the content
 });
 
 })
@@ -668,50 +795,137 @@ gsap.from("#faq-image img", {
 //contact
 
 document.addEventListener("DOMContentLoaded",()=> {
-  // Ensure GSAP and ScrollTrigger are loaded
+// Ensure GSAP and ScrollTrigger are loaded
 // Ensure GSAP and ScrollTrigger are loaded
 gsap.registerPlugin(ScrollTrigger);
 
 // Stars Animation
 gsap.from(".stars svg", {
-  scrollTrigger: {
-    trigger: ".contact-section",
-    start: "top 80%", // Trigger when the section is 80% in the viewport
-    toggleActions: "play none none reverse",
-  },
-  rotate: -15, // Rotates slightly
-  opacity: 0, // Starts invisible
-  duration: 1,
-  ease: "power2.out",
+scrollTrigger: {
+  trigger: ".contact-section",
+  start: "top 80%", // Trigger when the section is 80% in the viewport
+  toggleActions: "play none none reverse",
+},
+rotate: -15, // Rotates slightly
+opacity: 0, // Starts invisible
+duration: 1,
+ease: "power2.out",
 });
 
 // "Let's Collaborate" Heading Animation
 gsap.from(".contact-section h3", {
-  scrollTrigger: {
-    trigger: ".contact-section",
-    start: "top 80%",
-    toggleActions: "play none none reverse",
-  },
-  y: 30, // Slides in from below
-  opacity: 0, // Starts invisible
-  duration: 1.2,
-  ease: "power2.out",
+scrollTrigger: {
+  trigger: ".contact-section",
+  start: "top 80%",
+  toggleActions: "play none none reverse",
+},
+y: 30, // Slides in from below
+opacity: 0, // Starts invisible
+duration: 1.2,
+ease: "power2.out",
 });
 
 // Main Heading Animation
 gsap.from(".contact-section h2", {
-  scrollTrigger: {
-    trigger: ".contact-section",
-    start: "top 80%",
-    toggleActions: "play none none reverse",
-  },
-  scale: 0.9, // Slightly scaled down
-  opacity: 0,
-  duration: 1.5,
-  ease: "power3.out",
+scrollTrigger: {
+  trigger: ".contact-section",
+  start: "top 80%",
+  toggleActions: "play none none reverse",
+},
+scale: 0.9, // Slightly scaled down
+opacity: 0,
+duration: 1.5,
+ease: "power3.out",
 });
 
 })
+
+
+
+
+
+//single
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Create a timeline for the hero section
+  const heroTimeline = gsap.timeline({
+      defaults: { duration: 1, ease: "power3.out" }
+  });
+
+  // Hero section animations
+  heroTimeline
+      .from(".bg-primary", {
+          opacity: 0,
+          y: 50,
+          duration: 1.2
+      })
+      .from(".bg-primary h1", {
+          opacity: 0,
+          y: 30,
+          duration: 1
+      }, "-=0.8")
+      .from(".bg-primary p", {
+          opacity: 0,
+          y: 20,
+          duration: 1
+      }, "-=0.8");
+
+  // Main content animations
+  gsap.from(".main-image", {
+      opacity: 0,
+      scale: 0.9,
+      duration: 1.2,
+      scrollTrigger: {
+          trigger: ".main-image",
+          start: "top 80%",
+      }
+  });
+
+  // Tabs animation
+  gsap.from(".tab-btn", {
+      opacity: 0,
+      x: -30,
+      stagger: 0.2,
+      duration: 0.8,
+      scrollTrigger: {
+          trigger: ".tab-btn",
+          start: "top 80%",
+      }
+  });
+
+  // Service cards animation
+  gsap.from(".sservice-card", {
+      opacity: 0,
+      y: 50,
+      stagger: 0.2,
+      duration: 1,
+      scrollTrigger: {
+          trigger: ".sservice-card",
+          start: "top 80%",
+      }
+  });
+
+  // Tab content animation
+  function animateTabContent(tabId) {
+      const content = document.querySelector(`#${tabId}`);
+      if (content) {
+          gsap.from(content, {
+              opacity: 0,
+              y: 20,
+              duration: 0.5,
+              ease: "power2.out"
+          });
+      }
+  }
+
+  // Add click listeners to tabs for content animation
+  document.querySelectorAll('.tab-btn').forEach(button => {
+      button.addEventListener('click', (e) => {
+          const tabId = e.target.getAttribute('data-tab');
+          animateTabContent(tabId);
+      });
+  });
+});
 
 
 

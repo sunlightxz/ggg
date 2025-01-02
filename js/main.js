@@ -127,9 +127,9 @@ function handleScroll() {
     // Scrolling up or at top - show navbar
     navbar.style.transform = 'translateY(0)';
     if (scrollTop > 10) {
-      navbar.classList.add('shadow-md', 'bg-white/95', 'dark:bg-black/95');
+      navbar.classList.add('shadow-md', 'backdrop-blur', 'dark:backdrop-blur');
     } else {
-      navbar.classList.remove('shadow-md', 'bg-white/95', 'dark:bg-black/95');
+      navbar.classList.remove('shadow-md', 'backdrop-blur', 'dark:backdrop-blur');
       navbar.classList.add('shadow-sm');
     }
   }
@@ -144,4 +144,124 @@ window.addEventListener('scroll', () => {
   isScrolling = setTimeout(() => {
     handleScroll();
   }, 10);
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+          // Remove active class from all buttons
+          tabBtns.forEach(b => {
+              b.classList.remove('tab-active');
+              b.classList.add('bg-gray-100');
+          });
+
+          // Add active class to clicked button
+          btn.classList.add('tab-active');
+          btn.classList.remove('bg-gray-100');
+
+          // Hide all tab contents
+          tabContents.forEach(content => {
+              content.classList.add('hidden');
+          });
+
+          // Show selected tab content
+          const tabId = btn.dataset.tab;
+          document.getElementById(tabId).classList.remove('hidden');
+      });
+  });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const groupx = document.querySelector(".bl1");
+
+  window.addEventListener("mousemove", (e) => {
+    const { clientX: mouseX, clientY: mouseY } = e;
+
+    const xMove = (mouseX - window.innerWidth / 2) * 0.05;
+    const yMove = (mouseY - window.innerHeight / 2) * 0.05;
+
+    gsap.to(groupx, {
+      x: xMove,
+      y: yMove,
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const groupx = document.querySelector(".bl2");
+
+  window.addEventListener("mousemove", (e) => {
+    const { clientX: mouseX, clientY: mouseY } = e;
+
+    const xMove = (mouseX - window.innerWidth / 2) * 0.05;
+    const yMove = (mouseY - window.innerHeight / 2) * 0.05;
+
+    gsap.to(groupx, {
+      x: xMove,
+      y: yMove,
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const groupx = document.querySelector(".bl3");
+
+  window.addEventListener("mousemove", (e) => {
+    const { clientX: mouseX, clientY: mouseY } = e;
+
+    const xMove = (mouseX - window.innerWidth / 2) * 0.05;
+    const yMove = (mouseY - window.innerHeight / 2) * 0.05;
+
+    gsap.to(groupx, {
+      x: xMove,
+      y: yMove,
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const groupx = document.querySelector(".bl4");
+
+  window.addEventListener("mousemove", (e) => {
+    const { clientX: mouseX, clientY: mouseY } = e;
+
+    const xMove = (mouseX - window.innerWidth / 2) * 0.05;
+    const yMove = (mouseY - window.innerHeight / 2) * 0.05;
+
+    gsap.to(groupx, {
+      x: xMove,
+      y: yMove,
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const groupx = document.querySelector(".bl5");
+
+  window.addEventListener("mousemove", (e) => {
+    const { clientX: mouseX, clientY: mouseY } = e;
+
+    const xMove = (mouseX - window.innerWidth / 2) * 0.05;
+    const yMove = (mouseY - window.innerHeight / 2) * 0.05;
+
+    gsap.to(groupx, {
+      x: xMove,
+      y: yMove,
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  });
 });

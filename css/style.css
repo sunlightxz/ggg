@@ -59,6 +59,10 @@ body {
     background-repeat: no-repeat;
     animation: updown 20s linear infinite;
 }
+
+.updown{
+    animation: updown2 4s ease-in-out infinite;
+}
 /* Hero Spiral Image */
 .hero-spiral {
     width: 100%;
@@ -90,6 +94,13 @@ body {
 @keyframes updown {
     from { transform: translateY(-50%) rotate(0deg); }
     to { transform: translateY(20%) rotate(30deg); }
+
+}
+@keyframes updown2 {
+    0%{transform:translateY(0) rotate(0deg)}
+    50%{transform:translateY(30px) rotate(30deg)}
+    100%{transform:translateY(0) rotate(0deg)}
+
 
 }
 
@@ -181,7 +192,6 @@ body {
 
 /* section formation */
 
-
 .courses-container{max-width:1200px;margin:0 auto}
 .courses-container h2{font-size:2.5rem;color:#022358;margin-bottom:3rem}
 .courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
@@ -224,17 +234,17 @@ body {
     top: 140px;
     background: linear-gradient(90deg, #FF12E7 0%, #2a1454 110.61%);
     border-radius: 50%;
-    animation: ball1 7s linear infinite;
+    animation: ball1 2s linear infinite;
     filter: blur(6px);
 }
 
-.groupx img {
+.groupx .bl5 {
     position: absolute;
     width: 45px;
     height: 45px;
     right: 15%;
     top: 70%;
-    animation: paper-ball 8s ease-in-out infinite;
+    animation: paper-ball 4s ease-in-out infinite;
 }
 
 .groupx span:nth-child(2) {
@@ -245,7 +255,7 @@ body {
     z-index: -1;
     filter: blur(0px);
     background: linear-gradient(90deg, #C4DFD9 0%, #56388e 110.61%);
-    animation: ball2 6s linear infinite;
+    animation: ball2 3s linear infinite;
 }
 
 .groupx span:nth-child(3) {
@@ -256,7 +266,7 @@ body {
     z-index: -1;
     filter: blur(0px);
     background: linear-gradient(90deg, #DEF9FA 0%, #9DEDF0 45%, #5CE1E6 70%, #33BBCF 100%);
-    animation: ball3 9s linear infinite;
+    animation: ball3 2s linear infinite;
 }
 
 .groupx span:nth-child(4) {
@@ -266,76 +276,77 @@ body {
     top: 80%;
     z-index: -1;
     background: #022358;
-    animation: ball4 5s linear infinite;
+    animation: ball4 2s linear infinite;
 }
 
 @keyframes ball1 {
     0% {
-        transform: rotate(0deg) translate(0);
+      scale: 0.8;
     }
     50% {
-        transform: rotate(180deg) translate(30px, 30px);
+        scale:1.2
     }
     100% {
-        transform: rotate(360deg) translate(0);
+      scale:0.8
     }
-}
-
-@keyframes ball2 {
+  }
+@keyframes ball1 {
     0% {
-        transform: rotate(0deg) translate(0);
+      scale: 0.8;
     }
     50% {
-        transform: rotate(-180deg) translate(-40px, 20px);
+        scale:1.2
     }
     100% {
-        transform: rotate(-360deg) translate(0);
+      scale:0.8
     }
-}
-
-@keyframes ball3 {
+  }
+  @keyframes ball2 {
     0% {
-        transform: rotate(0deg) translate(0);
+      scale: 0.8;
     }
     50% {
-        transform: rotate(180deg) translate(20px, -30px);
+        scale:1.2
     }
     100% {
-        transform: rotate(360deg) translate(0);
+      scale:0.8
     }
-}
-
+  }
+  @keyframes ball3 {
+    0% {
+      scale: 0.8;
+    }
+    50% {
+        scale:1.2
+    }
+    100% {
+      scale:0.8
+    }
+  }
 @keyframes ball4 {
     0% {
-        transform: rotate(0deg) translate(0);
+      scale: 0.8;
     }
     50% {
-        transform: rotate(-180deg) translate(30px, -20px);
+        scale:1.2
     }
     100% {
-        transform: rotate(-360deg) translate(0);
+      scale:0.8
     }
-}
+  }
 
-@keyframes paper-ball {
-    0% {
-        transform: rotate(0deg) translate(0);
-    }
-    25% {
-        transform: rotate(90deg) translate(20px, 20px);
+  @keyframes paper-ball {
+     0% {
+      scale: 0.8;
     }
     50% {
-        transform: rotate(180deg) translate(0, 40px);
-    }
-    75% {
-        transform: rotate(270deg) translate(-20px, 20px);
+        scale:1.2
     }
     100% {
-        transform: rotate(360deg) translate(0);
+      scale:0.8
     }
-}
+  }
 /* gradient */
-
 
 .section-gradient::before {
     content: "";
@@ -361,6 +372,17 @@ body {
     margin-right: 2%;
     margin-top: -3%;
     opacity: 0.5;
+}
+.hero-gradient::after{
+    bottom: 10%;
+    left: 0;
+    width: 750px;
+    height: 320px;
+    filter: blur(150px);
+    margin-right: 2%;
+    margin-top: -3%;
+    opacity: 0.5;
+
 }
 .contact-section::before{
     right: 50%;}
@@ -468,7 +490,7 @@ body {
     position: absolute;
     left: 120%;
     top: 50%;
-    background-color: gray;
+    background-color: rgb(226, 226, 226);
     opacity: 0.4;
     width: 25vw;
     height: 1px;
@@ -479,7 +501,7 @@ body {
     position: absolute;
     right: 120%;
     top: 50%;
-    background-color: gray;
+    background-color: rgb(226, 226, 226);
     opacity: 0.4;
     width: 25vw;
     height: 1px;
@@ -653,7 +675,7 @@ footer input::placeholder {
 
 
 .subhead {
- background-image: linear-gradient(268deg, #e6f3eb 1.92%, #e7f4e6 26.97%, #fefbf0 92.72%);
+ background-image: linear-gradient(268deg, #C7C7FF 1.92%, #e8e6f3 92.72%) !important;
 }
 
 
@@ -765,6 +787,7 @@ footer input::placeholder {
     }
 }
 
+
 .arrow-about{
     animation: scall 1.5s infinite linear;
 }
@@ -833,4 +856,69 @@ footer input::placeholder {
     display: block;
     width: 1323px;
     height: 965px;
+}
+
+
+
+.mySwiperd {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.mySwiperd .swiper-slide {
+    display: flex;
+    align-items: center;
+}
+
+/* Custom pagination styling */
+.mySwiperd .swiper-pagination {
+    position: relative;
+    margin-top: 40px;
+}
+
+.mySwiperd .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #0080FF;
+    opacity: 0.5;
+
+}
+
+.mySwiperd .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+
+
+.bgas{
+  
+}
+
+.tab-active {
+    background-color: #d9cfec;
+}
+.tab-active::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background-color: #fce7f3;
+    border-radius: 0 0 8px 8px;
+}
+
+.banner-gradient {
+    z-index: -1;
+    background-image: linear-gradient(166deg, #C794F6, blue);
+    opacity: .6;
+    filter: blur(160px);
+    transform-style: preserve-3d;
+    border-radius: 200px;
+    width: 700px;
+    height: 400px;
+    position: absolute;
+    inset: auto auto 30% 0;
+    transform: skew(38deg, 7deg) rotateX(31deg) rotateY(0) rotateZ(34deg) translate(0);
 }

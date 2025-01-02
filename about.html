@@ -5,7 +5,7 @@
     <title>Modern Navigation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
     <script>
@@ -19,6 +19,9 @@
                 DEFAULT: "#022358",
                 dark: "#6D28D9",
                 blue: "#297DF0",
+                bluea : "#217AFA",
+                pink: '#6D29D9',
+                gradient :'#0F4281'
               },
             },
 
@@ -46,8 +49,7 @@
           function ({ addUtilities }) {
             addUtilities({
               ".subhead": {
-                backgroundImage:
-                  "linear-gradient(268deg, #e6f3eb 1.92%, #e7f4e6 26.97%, #fefbf0 92.72%)",
+               
                 display: "flex",
                 gap: "0.75rem",
                 alignItems: "center",
@@ -71,7 +73,7 @@
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
   </head>
-  <body class="transition-colors duration-300 dark:bg-gray-950 w-screen">
+  <body class="transition-colors duration-300 dark:bg-primary w-screen">
     <div class="relative overflow-hidden w-full">
       <div
         class="floating-shape shape1 hidden sm:block absolute top-0 left-0 bg-blue-500 rounded-full w-10 h-10 animate-bounce"
@@ -96,18 +98,18 @@
           <!-- Logo -->
           <div class="flex-shrink-0 flex items-center">
             <a
-              href=""
+              href="./index.html"
               class="text-xl font-semibold text-black dark:text-white flex justify-center items-center"
             >
               <img
                 src="./assets/images/logo-white.png"
                 alt="Logo"
-                class="block dark:hidden h-[130px] w-auto"
+                class="block dark:hidden w-[160px]"
               />
               <img
                 src="./assets/images/logo-dark.png"
                 alt="Logo"
-                class="hidden dark:block h-[130px] w-auto"
+                class="hidden dark:block w-[160px]"
               />
             </a>
           </div>
@@ -117,23 +119,23 @@
             class="hidden font-semibold md:flex items-center space-x-8 text-md"
           >
             <a
-              href="#"
-              class="text-[#022358] dark:text-purple-400 font-semibold"
+              href="./index.html"
+              class="text-[#022358] dark:text-gray-300 hover:text-blue-900 dark:hover:text-purple-400 transition-colors"
               >Accueil</a
             >
             <a
-              href="#"
+              href="./formation.html"
               class="text-[#022358] dark:text-gray-300 hover:text-blue-900 dark:hover:text-purple-400 transition-colors"
               >Formation</a
             >
             <a
-              href="#"
+              href="./services.html"
               class="text-[#022358] dark:text-gray-300 hover:text-blue-900 dark:hover:text-purple-400 transition-colors"
               >Services</a
             >
             <a
               href="./about.html"
-              class="text-[#022358] dark:text-gray-300 hover:text-blue-900 dark:hover:text-purple-400 transition-colors"
+              class="text-primary-dark dark:text-purple-400 transition-colors"
               >A Propos</a
             >
           </div>
@@ -143,7 +145,7 @@
             <!-- Dark Mode Toggle -->
             <button
               id="theme-toggle"
-              class="p-2 rounded text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700"
+              class="p-2 rounded text-gray-500 dark:text-gray-400 hover:bg-[#EBF3F9] dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700"
             >
               <!-- Sun icon -->
               <svg
@@ -195,7 +197,7 @@
             <!-- Dark Mode Toggle for Mobile -->
             <button
               id="theme-toggle-mobile"
-              class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700"
+              class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-[#EBF3F9] dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700"
             >
               <!-- Sun icon -->
               <svg
@@ -257,62 +259,54 @@
         </div>
       </div>
 
-      <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-primary">
-          <a
-            href="#"
-            class="block px-3 py-2 text-purple-600 dark:text-purple-400 font-medium"
-            >Home</a
-          >
-          <a
-            href="#"
-            class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
-            >About</a
-          >
-          <a
-            href="#"
-            class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
-            >Services</a
-          >
-          <a
-            href="#"
-            class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
-            >Portfolios</a
-          >
-          <a
-            href="#"
-            class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
-            >Blog</a
-          >
-          <a
-            href="#"
-            class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
-            >Contact</a
-          >
-          <button
-            class="mt-4 w-full bg-purple-600 dark:bg-purple-500 text-white px-6 py-2 rounded-full hover:bg-purple-700 dark:hover:bg-purple-600 transition-colors duration-300 flex items-center justify-center"
-          >
-            Let's Talk
-            <span class="ml-2">→</span>
-          </button>
-        </div>
-      </div>
+   <!-- Mobile menu -->
+   <div id="mobile-menu" class="hidden md:hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-primary">
+      <a
+        href="./index.html"
+        class="block px-3 py-2 text-purple-600 dark:text-purple-400 font-medium"
+        >Home</a
+      >
+     
+      <a
+      href="./services.html"
+        class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+        >Services</a
+      >
+     
+      <a
+        href="./formation.html"
+        class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+        >Formation</a
+      >
+      <a
+      href="./about.html"
+      class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+      >About</a
+    >
+      <button
+        class="mt-4 w-full bg-purple-600 dark:bg-purple-500 text-white px-6 py-2 rounded-full hover:bg-purple-700 dark:hover:bg-purple-600 transition-colors duration-300 flex items-center justify-center"
+      >
+        Let's Talk
+        <span class="ml-2">→</span>
+      </button>
+    </div>
+  </div>
     </nav>
     <!--seoo-->
     <section
-      class="mx-auto z-30 h-[90vh] w-screen relative bg-primary text-white flex justify-center items-center"
+      class="mx-auto z-30 h-[90vh] w-screen relative bg-primary dark:bg-primary-pink text-white  flex justify-center items-center"
     >
       <div class="kkk"></div>
       <div class="max-w-3xl relative mx-auto text-center seo-content">
         <h2 class="text-5xl font-bold mb-6">Qui Sommes-Nous ?</h2>
-        <p class="text-xl text-gray-300 mb-12">
+        <p class="text-xl text-gray-300   mb-12">
           Une équipe passionnée par la création de contenu et la stratégie
           digitale, dédiée à votre succès dans le monde numérique.
         </p>
         <a
           href="#consultation"
-          class="inline-flex items-center bg-white text-primary px-8 py-3 rounded-2xl font-bold hover:bg-purple-100 transition-colors"
+          class="inline-flex items-center bg-white dark:text-black  text-primary px-8 py-3 rounded-2xl font-bold hover:bg-purple-100 transition-colors"
         >
           Contactez-nous
           <svg
@@ -341,7 +335,7 @@
 
       <div class="absolute bottom-0 overflow-x-hidden z-10 w-screen left-0">
         <svg
-          class="h-full w-full dark:fill-[#030712] fill-white"
+          class="h-full w-full dark:fill-primary fill-white"
           xmlns="http://www.w3.org/2000/svg"
           width="3000"
           height="400"
@@ -367,7 +361,7 @@
     <!-- About Section-->
     <section
       id="about"
-      class="min-h-screen relative z-30 py-24 md:py-32 sm:px-8 px-0 pl-8 sm:pl-8 dark:bg-gray-950 overflow-hidden"
+      class="min-h-screen relative z-30 py-24 md:py-32 sm:px-8 px-0 pl-8 sm:pl-8 dark:bg-primary overflow-hidden"
     >
       <div
         class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 pt-5"
@@ -398,7 +392,7 @@
             >
               <img src="./assets/images/Frame.png" class="w-4 h-4" alt="" />
               <h4
-                class="section-label text-blue-500 dark:text-blue-400 font-semibold text-sm uppercase tracking-wider"
+                class="section-label text-primary dark:text-blue-900 font-semibold text-sm uppercase tracking-wider"
               >
                 Pourquoi CreaSage ?
               </h4>
@@ -518,12 +512,11 @@
       </div>
     </section>
 
-    <!-- Our vision-->
+    <!-- Our vision
     <section
-      class="bg-gradient-to-br overflow-x-hidden bg-white dark:from-[#090a1c] dark:to-gray-950 text-black dark:text-white relative z-30 py-4 vision-section"
+      class="bg-gradient-to-br overflow-x-hidden bg-white dark:from-primary dark:to-gray-900 text-black dark:text-white relative z-30 py-4 vision-section"
     >
       <div class="max-w-7xl px-8 mx-auto">
-        <!-- Logo Slider -->
         <div class="swiper scrolling-container logo-swiper mt-16">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -585,8 +578,53 @@
         </div>
       </div>
     </section>
+-->
+    <!--logosss-->
+    <section 
+    class="bg-gradient-to-br overflow-x-hidden bg-white dark:to-primary dark:from-primary-blue text-black dark:text-white relative z-30 py-4 vision-section">
+    <div class="container mx-auto px-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <!-- Delivery Card -->
+              <div class="bg-[#EBF3F9] dark:bg-[#111827] rounded-lg p-8 flex flex-col items-center text-center hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors duration-300">
+                  <svg class="w-12 h-12 text-gray-800 dark:text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
+                      <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5"></rect>
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">Livraison 24H/48h</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm">Livraison à domicile partout au Maroc</p>
+              </div>
+  
+              <!-- Payment Card -->
+              <div class="bg-[#EBF3F9] dark:bg-[#111827] rounded-lg p-8 flex flex-col items-center text-center hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors duration-300">
+                  <svg class="w-12 h-12 text-gray-800 dark:text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h.01M11 15h2M6 5h12a3 3 0 013 3v8a3 3 0 01-3 3H6a3 3 0 01-3-3V8a3 3 0 013-3z"></path>
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">Paiement</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm">Paiement à la livraison ou Virement BC</p>
+              </div>
+  
+              <!-- Guarantee Card -->
+              <div class="bg-[#EBF3F9] dark:bg-[#111827] rounded-lg p-8 flex flex-col items-center text-center hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors duration-300">
+                  <svg class="w-12 h-12 text-gray-800 dark:text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">Garantie</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm">Garantie 1 an pièces et main d'œuvre.<br>SAV +212666998384</p>
+              </div>
+  
+              <!-- Customer Service Card -->
+              <div class="bg-[#EBF3F9] dark:bg-[#111827] rounded-lg p-8 flex flex-col items-center text-center hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors duration-300">
+                  <svg class="w-12 h-12 text-gray-800 dark:text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">Service Client</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm">Disponible du lundi au samedi du 10h à 19h</p>
+              </div>
+          </div>
+      </div>
+    </section>
     <!--Our values-->
-    <section class="bg-white relative section-gradient z-30 p-8">
+    <section class="bg-white dark:bg-primary relative section-gradient z-30 p-8">
       <div class="container py-24 mx-auto max-w-7xl">
         <!-- Header Section -->
         <div class="flex flex-col justify-center items-center">
@@ -594,22 +632,22 @@
             <div class="subhead font-manrope">
               <img src="./assets/images/Frame.png" class="w-4 h-4" alt="" />
               <span
-                class="section-label text-blue-500 dark:text-blue-400 font-semibold text-sm uppercase tracking-wider font-manrope"
+              class="section-label text-primary dark:text-blue-900 font-semibold text-sm uppercase tracking-wider"
               >
                 OUR VALUES
               </span>
             </div>
           </div>
           <div
-            class="services-header flex flex-col justify-center items-center mb-12 mt-4"
+            class="flex flex-col justify-center items-center mb-12 mt-4"
           >
             <h2
-              class="text-4xl md:text-5xl text-black font-semibold text-center dark:text-white font-quicksand mb-6"
+              class="text-4xl md:text-5xl text-gray-900 dark:text-white font-semibold text-center font-quicksand mb-6"
             >
               Nos
-              <span class="text-primary">Valeurs </span>
+              <span class="text-primary dark:text-blue-400">Valeurs</span>
             </h2>
-            <p class="max-w-screen font-manrope -sm text-center">
+            <p class="max-w-screen font-manrope text-gray-600 dark:text-gray-300 text-center">
               The Values That Drive Everything We Do
             </p>
           </div>
@@ -618,114 +656,106 @@
         <!-- Values Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Community First -->
-          <div class="value-card gradient-bg p-8 rounded-lg shadow-sm">
+          <div class="value-card bg-[#EBF3F9] dark:bg-gray-900 p-8 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
             <div class="w-12 h-12 mb-6">
               <svg class="w-full h-full" viewBox="0 0 48 48" fill="none">
-                <rect width="48" height="48" rx="24" fill="#E0F1FF" />
-                <path
-                  d="M24 28C28 28 31 25 31 21C31 17 28 14 24 14C20 14 17 17 17 21C17 25 20 28 24 28ZM24 30C19 30 14 32.5 14 36V38H34V36C34 32.5 29 30 24 30Z"
-                  fill="#004B3F"
-                />
+                <rect width="48" height="48" rx="24" fill="#E0F1FF" class="dark:fill-blue-900" />
+                <path d="M24 28C28 28 31 25 31 21C31 17 28 14 24 14C20 14 17 17 17 21C17 25 20 28 24 28ZM24 30C19 30 14 32.5 14 36V38H34V36C34 32.5 29 30 24 30Z" 
+                      class="fill-[#004B3F] dark:fill-blue-400" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold font-quicksand text-dark-green mb-4">
+            <h3 class="text-xl font-bold font-quicksand text-gray-900 dark:text-white mb-4">
               Créativité
             </h3>
-            <p class="text-gray-600 font-manrope">
+            <p class="text-gray-600 dark:text-gray-300 font-manrope">
               Faire preuve d'innovation pour offrir des solutions uniques.
             </p>
           </div>
 
           <!-- Always Authentic -->
-          <div class="value-card gradient-bg p-8 rounded-lg shadow-sm">
+          <div class="value-card bg-[#EBF3F9] dark:bg-gray-900 p-8 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
             <div class="w-12 h-12 mb-6">
               <svg class="w-full h-full" viewBox="0 0 48 48" fill="none">
-                <rect width="48" height="48" rx="24" fill="#E0F1FF" />
-                <path
-                  d="M32 16H16C14.9 16 14 16.9 14 18V30C14 31.1 14.9 32 16 32H32C33.1 32 34 31.1 34 30V18C34 16.9 33.1 16 32 16ZM32 30H16V20H32V30Z"
-                  fill="#004B3F"
-                />
+                <rect width="48" height="48" rx="24" fill="#E0F1FF" class="dark:fill-blue-900" />
+                <path d="M32 16H16C14.9 16 14 16.9 14 18V30C14 31.1 14.9 32 16 32H32C33.1 32 34 31.1 34 30V18C34 16.9 33.1 16 32 16ZM32 30H16V20H32V30Z" 
+                      class="fill-[#004B3F] dark:fill-blue-400" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold font-quicksand text-dark-green mb-4">
+            <h3 class="text-xl font-bold font-quicksand text-gray-900 dark:text-white mb-4">
               Sagacité
             </h3>
-            <p class="text-gray-600 font-manrope">
+            <p class="text-gray-600 dark:text-gray-300 font-manrope">
               Proposer des analyses et des approches stratégiques de pointe.
             </p>
           </div>
 
-          <div class="value-card gradient-bg p-8 rounded-lg shadow-sm">
+          <div class="value-card bg-[#EBF3F9] dark:bg-gray-900 p-8 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
             <div class="w-12 h-12 mb-6">
               <svg class="w-full h-full" viewBox="0 0 48 48" fill="none">
-                <rect width="48" height="48" rx="24" fill="#E0F1FF" />
-                <path
-                  d="M24 14C19.58 14 16 17.58 16 22C16 26.42 19.58 30 24 30C28.42 30 32 26.42 32 22C32 17.58 28.42 14 24 14ZM24 28C20.69 28 18 25.31 18 22C18 18.69 20.69 16 24 16C27.31 16 30 18.69 30 22C30 25.31 27.31 28 24 28Z"
-                  fill="#004B3F"
-                />
+                <rect width="48" height="48" rx="24" fill="#E0F1FF" class="dark:fill-blue-900" />
+                <path d="M24 14C19.58 14 16 17.58 16 22C16 26.42 19.58 30 24 30C28.42 30 32 26.42 32 22C32 17.58 28.42 14 24 14ZM24 28C20.69 28 18 25.31 18 22C18 18.69 20.69 16 24 16C27.31 16 30 18.69 30 22C30 25.31 27.31 28 24 28Z" 
+                      class="fill-[#004B3F] dark:fill-blue-400" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold font-quicksand text-dark-green mb-4">
+            <h3 class="text-xl font-bold font-quicksand text-gray-900 dark:text-white mb-4">
               Collaboration
             </h3>
-            <p class="text-gray-600 font-manrope">
+            <p class="text-gray-600 dark:text-gray-300 font-manrope">
               Construire des relations solides et durables.
             </p>
           </div>
 
-          <div class="value-card gradient-bg p-8 rounded-lg shadow-sm">
+          <div class="value-card bg-[#EBF3F9] dark:bg-gray-900 p-8 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
             <div class="w-12 h-12 mb-6">
               <svg class="w-full h-full" viewBox="0 0 48 48" fill="none">
-                <rect width="48" height="48" rx="24" fill="#E0F1FF" />
-                <path
-                  d="M24 14C18.48 14 14 18.48 14 24C14 29.52 18.48 34 24 34C29.52 34 34 29.52 34 24C34 18.48 29.52 14 24 14ZM24 32C19.59 32 16 28.41 16 24C16 19.59 19.59 16 24 16C28.41 16 32 19.59 32 24C32 28.41 28.41 32 24 32Z"
-                  fill="#004B3F"
-                />
+                <rect width="48" height="48" rx="24" fill="#E0F1FF" class="dark:fill-blue-900" />
+                <path d="M24 14C19.58 14 16 17.58 16 22C16 26.42 19.58 30 24 30C28.42 30 32 26.42 32 22C32 17.58 28.42 14 24 14ZM24 28C20.69 28 18 25.31 18 22C18 18.69 20.69 16 24 16C27.31 16 30 18.69 30 22C30 25.31 27.31 28 24 28Z" 
+                      class="fill-[#004B3F] dark:fill-blue-400" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold font-quicksand text-dark-green mb-4">
+            <h3 class="text-xl font-bold font-quicksand text-gray-900 dark:text-white mb-4">
               Excellence
             </h3>
-            <p class="text-gray-600 font-manrope">
+            <p class="text-gray-600 dark:text-gray-300 font-manrope">
               La qualité est au cœur de chacune de nos actions.
             </p>
           </div>
 
           <!-- Positive Energy -->
-          <div class="value-card gradient-bg p-8 rounded-lg shadow-sm">
+          <div class="value-card bg-[#EBF3F9] dark:bg-gray-900 p-8 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
             <div class="w-12 h-12 mb-6">
               <svg class="w-full h-full" viewBox="0 0 48 48" fill="none">
-                <rect width="48" height="48" rx="24" fill="#E0F1FF" />
+                <rect width="48" height="48" rx="24" fill="#E0F1FF" class="dark:fill-blue-900" />
                 <path
                   d="M24 14L21.8 19.4L16 20.2L20 24.2L19.1 30L24 27.3L28.9 30L28 24.2L32 20.2L26.2 19.4L24 14Z"
-                  fill="#004B3F"
+                  class="fill-[#004B3F] dark:fill-blue-400"
                 />
               </svg>
             </div>
-            <h3 class="text-xl font-bold font-quicksand text-dark-green mb-4">
+            <h3 class="text-xl font-bold font-quicksand text-gray-900 dark:text-white mb-4">
               Positive Energy
             </h3>
-            <p class="text-gray-600 font-manrope">
+            <p class="text-gray-600 dark:text-gray-300 font-manrope">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Suspendisse varius enim in eros elementum tristique.
             </p>
           </div>
 
           <!-- Stay Sustainable -->
-          <div class="value-card gradient-bg p-8 rounded-lg shadow-sm">
+          <div class="value-card bg-[#EBF3F9] dark:bg-gray-900 p-8 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
             <div class="w-12 h-12 mb-6">
               <svg class="w-full h-full" viewBox="0 0 48 48" fill="none">
-                <rect width="48" height="48" rx="24" fill="#E0F1FF" />
+                <rect width="48" height="48" rx="24" fill="#E0F1FF" class="dark:fill-blue-900" />
                 <path
                   d="M32 16H16C14.9 16 14 16.9 14 18V30C14 31.1 14.9 32 16 32H32C33.1 32 34 31.1 34 30V18C34 16.9 33.1 16 32 16ZM32 30H16V20H32V30Z"
-                  fill="#004B3F"
+                  class="fill-[#004B3F] dark:fill-blue-400"
                 />
               </svg>
             </div>
-            <h3 class="text-xl font-quicksand font-bold text-dark-green mb-4">
+            <h3 class="text-xl font-bold font-quicksand text-gray-900 dark:text-white mb-4">
               Stay Sustainable
             </h3>
-            <p class="text-gray-600 font-manrope">
+            <p class="text-gray-600 dark:text-gray-300 font-manrope">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Suspendisse varius enim in eros elementum tristique.
             </p>
@@ -735,151 +765,165 @@
     </section>
 
     <!--Our team-->
-    <section class="bg-white py-20">
+    <section class="bg-white dark:bg-primary py-20">
       <div class="container mx-auto max-w-7xl px-4">
         <!-- Header Section -->
-        <div class="text-center mb-16">
-          <span
-            class="inline-block px-4 py-2 bg-blue-50 rounded-full text-sm text-dark-blue font-medium mb-4"
+        <div class="flex flex-col justify-center items-center">
+          <div class="flex justify-center items-center">
+            <div class="subhead font-manrope">
+              <img src="./assets/images/Frame.png" class="w-4 h-4" alt="" />
+              <span
+              class="section-label text-primary dark:text-blue-900 font-manrope font-semibold text-sm uppercase tracking-wider"
+              >
+              OUR EXPERTS
+              </span>
+            </div>
+          </div>
+          <div
+            class="flex flex-col justify-center items-center mb-12 mt-4"
           >
-            OUR EXPERTS
-          </span>
-          <h2
-            class="text-4xl md:text-5xl font-bold text-dark-blue max-w-3xl mx-auto leading-tight"
-          >
-            Meet Your Passionate Experts
-          </h2>
+            <h2
+              class="text-4xl md:text-5xl text-gray-900 dark:text-white font-semibold text-center font-quicksand mb-6"
+            >
+            Meet Your
+
+              <span class="text-primary dark:text-primary-bluea">Passionate</span>Experts
+            </h2>
+            <p class="max-w-screen font-manrope text-gray-600 dark:text-gray-300 text-center">
+              The Values That Drive Everything We Do
+            </p>
+          </div>
         </div>
 
         <!-- Experts Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <!-- Expert Card 1 -->
-          <div
-            class="expert-card bg-white rounded-lg overflow-hidden shadow-sm transition-transform duration-300 hover:-translate-y-2"
-          >
+          <div class="expert-card bg-[#EBF3F9] dark:bg-gray-900 rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md">
             <img
               src="./assets/images/team1.png"
               alt="Cameron Williamson"
               class="w-full h-64 object-cover object-center"
             />
             <div class="p-6">
-              <h3 class="text-xl font-bold text-dark-blue">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white font-quicksand">
                 Cameron Williamson
               </h3>
-              <p class="text-gray-600">Web Designer</p>
+              <p class="text-gray-600 dark:text-gray-300 font-manrope">Web Designer</p>
             </div>
           </div>
 
           <!-- Expert Card 2 -->
-          <div
-            class="expert-card bg-white rounded-lg overflow-hidden shadow-sm transition-transform duration-300 hover:-translate-y-2"
-          >
+          <div class="expert-card bg-[#EBF3F9] dark:bg-gray-900 rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md">
             <img
               src="./assets/images/team2.png"
               alt="Jane Cooper"
               class="w-full h-64 object-cover object-center"
             />
             <div class="p-6">
-              <h3 class="text-xl font-bold text-dark-blue">Jane Cooper</h3>
-              <p class="text-gray-600">UI/UX Trainer</p>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white font-quicksand">
+                Jane Cooper
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 font-manrope">UI/UX Trainer</p>
             </div>
           </div>
 
           <!-- Expert Card 3 -->
-          <div
-            class="expert-card bg-white rounded-lg overflow-hidden shadow-sm transition-transform duration-300 hover:-translate-y-2"
-          >
+          <div class="expert-card bg-[#EBF3F9] dark:bg-gray-900 rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md">
             <img
               src="./assets/images/team3.png"
               alt="Eleanor Pena"
               class="w-full h-64 object-cover object-center"
             />
             <div class="p-6">
-              <h3 class="text-xl font-bold text-dark-blue">Eleanor Pena</h3>
-              <p class="text-gray-600">UI/UX Designer</p>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white font-quicksand">
+                Eleanor Pena
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 font-manrope">UI/UX Designer</p>
             </div>
           </div>
 
           <!-- Expert Card 4 -->
-          <div
-            class="expert-card bg-white rounded-lg overflow-hidden shadow-sm transition-transform duration-300 hover:-translate-y-2"
-          >
+          <div class="expert-card bg-[#EBF3F9] dark:bg-gray-900 rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md">
             <img
               src="./assets/images/team4.png"
               alt="Brooklyn Simmons"
               class="w-full h-64 object-cover object-center"
             />
             <div class="p-6">
-              <h3 class="text-xl font-bold text-dark-blue">Brooklyn Simmons</h3>
-              <p class="text-gray-600">Senior Product Designer</p>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white font-quicksand">
+                Brooklyn Simmons
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 font-manrope">Senior Product Designer</p>
             </div>
           </div>
 
           <!-- Expert Card 5 -->
-          <div
-            class="expert-card bg-white rounded-lg overflow-hidden shadow-sm transition-transform duration-300 hover:-translate-y-2"
-          >
+          <div class="expert-card bg-[#EBF3F9] dark:bg-gray-900 rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md">
             <img
               src="./assets/images/team5.png"
               alt="Albert Flores"
               class="w-full h-64 object-cover object-center"
             />
             <div class="p-6">
-              <h3 class="text-xl font-bold text-dark-blue">Albert Flores</h3>
-              <p class="text-gray-600">Marketing Coordinator</p>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white font-quicksand">
+                Albert Flores
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 font-manrope">Marketing Coordinator</p>
             </div>
           </div>
 
           <!-- Expert Card 6 -->
-          <div
-            class="expert-card bg-white rounded-lg overflow-hidden shadow-sm transition-transform duration-300 hover:-translate-y-2"
-          >
+          <div class="expert-card bg-[#EBF3F9] dark:bg-gray-900 rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md">
             <img
               src="./assets/images/team6.png"
               alt="Annette Black"
               class="w-full h-64 object-cover object-center"
             />
             <div class="p-6">
-              <h3 class="text-xl font-bold text-dark-blue">Annette Black</h3>
-              <p class="text-gray-600">Medical Assistant</p>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white font-quicksand">
+                Annette Black
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 font-manrope">Medical Assistant</p>
             </div>
           </div>
 
           <!-- Expert Card 7 -->
-          <div
-            class="expert-card bg-white rounded-lg overflow-hidden shadow-sm transition-transform duration-300 hover:-translate-y-2"
-          >
+          <div class="expert-card bg-[#EBF3F9] dark:bg-gray-900 rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md">
             <img
               src="./assets/images/team7.png"
               alt="Devon Lane"
               class="w-full h-64 object-cover object-center"
             />
             <div class="p-6">
-              <h3 class="text-xl font-bold text-dark-blue">Devon Lane</h3>
-              <p class="text-gray-600">Web Developer</p>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white font-quicksand">
+                Devon Lane
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 font-manrope">Web Developer</p>
             </div>
           </div>
 
           <!-- Expert Card 8 -->
-          <div
-            class="expert-card bg-white rounded-lg overflow-hidden shadow-sm transition-transform duration-300 hover:-translate-y-2"
-          >
+          <div class="expert-card bg-[#EBF3F9] dark:bg-gray-900 rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md">
             <img
               src="./assets/images/team8.png"
               alt="Ronald Richards"
               class="w-full h-64 object-cover object-center"
             />
             <div class="p-6">
-              <h3 class="text-xl font-bold text-dark-blue">Ronald Richards</h3>
-              <p class="text-gray-600">UI/UX Designer</p>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white font-quicksand">
+                Ronald Richards
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 font-manrope">UI/UX Designer</p>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+
     <!-- Service Section-->
     <section
-      class="services-section section-gradient z-30 bg-gradient-to-br from-gray-100 to-purple-100 dark:from-[#090a1c] dark:to-gray-950 relative py-24"
+      class="services-section section-gradient z-30 bg-gradient-to-br from-gray-100 to-purple-100 dark:from-gray-950 dark:to-primary relative py-24"
     >
       <div
         class="services-container shape max-w-7xl mx-auto px-8 flex flex-col justify-center items-center"
@@ -890,7 +934,7 @@
             <div class="subhead font-manrope">
               <img src="./assets/images/Frame.png" class="w-4 h-4" alt="" />
               <span
-                class="section-label text-blue-500 dark:text-blue-400 font-semibold text-sm uppercase tracking-wider font-manrope"
+                class="section-label text-primary dark:text-blue-900 font-semibold text-sm uppercase tracking-wider font-manrope"
               >
                 Our Service
               </span>
@@ -902,12 +946,11 @@
             <h2
               class="text-4xl md:text-5xl text-black font-semibold text-center dark:text-white font-quicksand mb-6"
             >
-              Nos Services
-              <span class="text-primary-dark">Services </span>
+            Notre Mission Chez 
+              <span class="text-primary-bluea">CreaSage. </span>
             </h2>
             <p class="max-w-screen-sm text-center">
-              Découvrez comment nous pouvons vous aider à atteindre vos
-              objectifs.
+              Nous aidons les entreprises à réussir dans le digital grâce à un contenu engageant et des stratégies innovantes. Notre objectif est de transformer vos idées en opportunités et d'ouvrir de nouvelles perspectives grâce à des solutions sur mesure.
             </p>
           </div>
         </div>
@@ -936,7 +979,7 @@
                 <h3
                   class="text-xl font-bold text-black dark:text-white mb-4 font-quicksand"
                 >
-                  Création de Contenu
+                Succès Digital
                 </h3>
                 <p class="text-gray-500 dark:text-gray-300 mb-12 font-manrope">
                   Articles, vidéos, infographies pour booster votre visibilité.
@@ -1129,121 +1172,115 @@
     </section>
 
     <!--Contact-->
-    <section class="">
-      <div class="container mx-auto px-4 py-16 bg-white dark:bg-black text-gray-900 dark:text-white transition-colors duration-200">
+    <section class="bg-gradient-to-br from-gray-100 to-purple-100 dark:from-gray-950 dark:to-primary ">
+      <div class="container mx-auto px-4 py-16 transition-colors duration-200">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-2">Contact Us</h2>
-            <h1 class="text-5xl font-bold mb-4">Get in Touch</h1>
-            <p class="text-gray-400">Have questions? We're here for you. Drop us a line, write us an email, or send us a text.</p>
-        </div>
-  
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Contact Information -->
-            <div class="bg-zinc-900 p-8 rounded-lg">
-                <h3 class="text-xl font-bold mb-6">Contact Information</h3>
-                <p class="text-gray-400 mb-6">Say something to start a live chat!</p>
-                
-                <div class="space-y-6">
-                    <div class="flex items-center">
-                        <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                        </svg>
-                        <span>(949) 890-6134</span>
-                    </div>
-                    <div class="flex items-center">
-                        <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                        <span>team@nucleus.me</span>
-                    </div>
-                    <div class="flex items-center">
-                        <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
-                        <span>132 Dartmouth Street Boston, Massachusetts 02156 United States</span>
-                    </div>
-                </div>
-  
-                <div class="flex space-x-4 mt-8">
-                    <a href="#" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-zinc-700">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-zinc-700">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-zinc-700">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.654-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
-                        </svg>
-                    </a>
-                </div>
+          <div class="flex justify-center items-center mb-4">
+            <div class="subhead font-manrope">
+              <img src="./assets/images/Frame.png" class="w-4 h-4" alt="" />
+              <span class="section-label text-primary dark:text-blue-900 font-semibold text-sm uppercase tracking-wider">
+                CONTACT US
+              </span>
             </div>
-  
-            <!-- Contact Form -->
-            <div class="bg-zinc-900 p-8 rounded-lg">
-                <form id="contactForm" class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Name</label>
-                            <input type="text" class="w-full bg-zinc-800 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Email</label>
-                            <input type="email" class="w-full bg-zinc-800 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Phone Number</label>
-                        <input type="tel" class="w-full bg-zinc-800 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Message</label>
-                        <textarea class="w-full bg-zinc-800 rounded-md p-3 h-32 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="checkbox" class="rounded bg-zinc-800 border-zinc-700 text-blue-500 focus:ring-blue-500" id="subscribe">
-                        <label for="subscribe" class="ml-2 text-sm text-gray-400">Subscribe to receive the latest news and exclusive offers</label>
-                    </div>
-                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors">
-                        Send Message
-                    </button>
-                </form>
-            </div>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white font-quicksand">Get in Touch</h2>
+          <p class="text-gray-600 dark:text-gray-400 font-manrope">Have questions? We're here for you. Drop us a line, write us an email, or send us a text.</p>
         </div>
-  
-        <!-- Newsletter Section -->
-        <div class="mt-16 bg-zinc-900 p-8 rounded-lg">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="mb-6 md:mb-0">
-                    <h3 class="text-2xl font-bold mb-2">Join 2,000+ subscribers</h3>
-                    <p class="text-gray-400">Stay in the loop with everything you need to know.</p>
+
+        <div class="grid md:grid-cols-2 bg-[#F7F8F7] dark:bg-gray-900 p-7 gap-8">
+          <!-- Contact Information -->
+          <div class="bg-white flex flex-col justify-between dark:bg-gray-900 p-8 rounded-lg shadow-sm transition-all duration-300">
+          <div class="">
+            <h3 class="text-xl font-bold mb-6 text-gray-900 dark:text-white font-quicksand">Contact Information</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6 font-manrope">Say something to start a live chat!</p>
+          </div>
+            
+            <div class="space-y-6">
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center mr-4">
+                  <svg class="w-5 h-5 text-primary dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                  </svg>
                 </div>
-                <form id="newsletterForm" class="flex w-full md:w-auto">
-                    <input type="email" placeholder="Enter your email" class="flex-1 md:w-64 bg-zinc-800 rounded-l-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <button type="submit" class="bg-blue-600 text-white px-6 rounded-r-md hover:bg-blue-700 transition-colors">
-                        Subscribe
-                    </button>
-                </form>
+                <span class="text-gray-700 dark:text-gray-300">(212)0000000</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center mr-4">
+                  <svg class="w-5 h-5 text-primary dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <span class="text-gray-700 dark:text-gray-300">team@nucleus.me</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center mr-4">
+                  <svg class="w-5 h-5 text-primary dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
+                <span class="text-gray-700 dark:text-gray-300">132 Dartmouth Street Boston, Massachusetts 02156 United States</span>
+              </div>
             </div>
+
+            <div class="flex space-x-4 mt-8">
+              <a href="#" class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                <svg class="w-5 h-5 text-primary dark:text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                <svg class="w-5 h-5 text-primary dark:text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="bg-[#F7F8F7] dark:bg-gray-900 p-8 rounded-lg shadow-sm transition-all duration-300">
+            <form id="contactForm" class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                  <input type="text" class="w-full bg-white dark:bg-gray-800 rounded-md p-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                  <input type="email" class="w-full bg-white dark:bg-gray-800 rounded-md p-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone Number</label>
+                <input type="tel" class="w-full bg-white dark:bg-gray-800 rounded-md p-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                <textarea class="w-full bg-white dark:bg-gray-800 rounded-md p-3 h-32 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" class="rounded bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-blue-500 focus:ring-blue-500" id="subscribe">
+                <label for="subscribe" class="ml-2 text-sm text-gray-600 dark:text-gray-400">Subscribe to receive the latest news and exclusive offers</label>
+              </div>
+              <button type="submit" class="w-full bg-primary hover:bg-blue-700 dark:bg-primary-pink dark:hover:bg-purple-500 text-white py-3 px-6 rounded-md transition-colors">
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
-    </div>
+      </div>
     </section>
- 
+
     <!---->
     <section
-      class="mx-auto z-30 py-28 w-screen relative bg-primary text-white flex justify-center items-center"
+      class="mx-auto z-30 py-28 w-screen relative bg-primary dark:bg-primary-pink text-white   flex justify-center items-center"
     >
       <div class="kkk"></div>
       <div class="max-w-3xl relative mx-auto text-center seo-content">
         <h2 class="text-5xl font-bold mb-6">
           Ready to Take Your SEO to The Next Level
         </h2>
-        <p class="text-xl text-gray-300 mb-12">
+        <p class="text-xl text-gray-300 mb-12 ">
           Prenez contact avec notre équipe et découvrez comment nous pouvons
           transformer vos idées en réalité digitale.
         </p>
@@ -1280,7 +1317,7 @@
     <!-- FAQ Section -->
     <section
       id="faq-section"
-      class="bg-gradient-to-br from-gray-100 to-purple-100 dark:from-gray-950 dark:to-gray-900 py-24 relative z-30 overflow-hidden"
+      class="bg-gradient-to-br from-gray-100 to-purple-100 dark:from-primary dark:to-gray-900 py-24 relative z-30 overflow-hidden"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="w-full flex flex-col lg:flex-row gap-12">
@@ -1313,7 +1350,32 @@
       </div>
     </section>
 
-    <footer class="bg-black z-10 overflow-hidden text-white py-16">
+    <footer class="bg-black z-30 relative text-white py-16">
+      <div
+        class="wave absolute lg:top-[-145px] md:top-[-115px] sm:top-[-85px] top-[-55px] overflow-x-hidden z-40 w-screen left-0"
+      >
+        <svg
+          class="h-full w-full fill-black"
+          xmlns="http://www.w3.org/2000/svg"
+          width="3000"
+          height="400"
+          viewBox="0 180 2500 200"
+        >
+          <path
+            class="st1"
+            d="M 0 250 C 1200 400 1200 50 3000 250 L 3000 550 L 0 550 L 0 250"
+          >
+            <animate
+              attributeName="d"
+              dur="5s"
+              values="M 0 250 C 1200 400 1200 50 3000 250 L 3000 550 L 0 550 L 0 250;
+                      M 0 250 C 400 50 400 400 3000 250 L 3000 550 L 0 550 L 0 250;
+                      M 0 250 C 1200 400 1200 50 3000 250 L 3000 550 L 0 550 L 0 250"
+              repeatCount="indefinite"
+            ></animate>
+          </path>
+        </svg>
+      </div>
       <div class="container mx-auto px-4">
         <!-- Grid container -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -1336,20 +1398,18 @@
 
           <!-- Services Grid -->
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 mt-8 md:mt-0">
-            <div class="space-y-4">
-              <p class="font-semibold mb-2">Formations</p>
-              <div class="space-y-2 text-gray-400">
-                <p class="hover:text-white cursor-pointer">Formation 1</p>
-                <p class="hover:text-white cursor-pointer">Formation 2</p>
-                <p class="hover:text-white cursor-pointer">Formation 3</p>
-              </div>
+            <div class="flex flex-col">
+              <a class="font-semibold mb-2" href="./index.html">Home</a>
+              <a class="font-semibold mb-2" href="./formation.html">Formations</a>
+              <a class="font-semibold mb-2" href="./services.html">Services</a>
+              <a class="font-semibold mb-2" href="./about.html">A Propos</a>
             </div>
             <div class="space-y-4">
-              <p class="font-semibold mb-2">Services</p>
+              <p class="font-semibold mb-2">Our Socials</p>
               <div class="space-y-2 text-gray-400">
-                <p class="hover:text-white cursor-pointer">Service 1</p>
-                <p class="hover:text-white cursor-pointer">Service 2</p>
-                <p class="hover:text-white cursor-pointer">Service 3</p>
+                <p class="hover:text-white cursor-pointer">Linkedin</p>
+                <p class="hover:text-white cursor-pointer">Facebook</p>
+                <p class="hover:text-white cursor-pointer">Instagram</p>
               </div>
             </div>
             <div class="space-y-4">
@@ -1366,7 +1426,7 @@
         <div class="mt-24 flex flex-col space-y-8">
           <!-- Logo -->
           <h1
-            class="text-7xl sm:text-9xl lg:text-[180px] font-quicksand font-semibold text-center md:text-left"
+            class="text-7xl sm:text-9xl lg:text-[160px] font-quicksand font-semibold text-center md:text-left"
           >
             Creasage
           </h1>
@@ -1387,7 +1447,6 @@
         </div>
       </div>
     </footer>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/main.js"></script>
@@ -1396,21 +1455,6 @@
     <script src="./js/faq.js"></script>
     <script src="./js/gsap.js"></script>
     <script src="./js/darkMode.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest/bundle.js"></script>
-    <script>
-      // Initialize Lenis
-      const lenis = new Lenis({
-        duration: 1.2, // Adjust scroll duration
-        easing: (t) => 1 - Math.pow(1 - t, 3), // Smooth easing
-        smooth: true, // Enable smooth scrolling
-      });
-
-      // Animation Frame for Lenis
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
-    </script>
+   
   </body>
 </html>
