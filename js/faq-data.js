@@ -1,27 +1,16 @@
 // FAQ data store
 const faqData = [
     {
-        question: "What's the best thing about Switzerland?",
-        answer: "I don't know, but their flag is a big plus!"
+        question: "Quels sont les prérequis pour suivre la formation ?",
+        answer: "Aucun prérequis n’est nécessaire. Cette formation est adaptée aux débutants et aux professionnels."
     },
     {
-        question: "How do you make holy water?",
-        answer: "You boil the hell out of it!"
+        question: "La formation est-elle en ligne ou en présentiel?",
+        answer: "Présentiel."
     },
     {
-        question: "What do you call someone with no body and no nose?",
-        answer: "Nobody knows!"
+        question: "Y a-t-il un certificat à la fin ?",
+        answer: "Oui, un certificat de participation sera remis à la fin de la formation."
     },
-    {
-        question: "Why do you never see elephants hiding in trees?",
-        answer: "Because they're really good at it!"
-    },
-    {
-        question: "Why can't you hear a pterodactyl go to the bathroom?",
-        answer: "Because the P is silent!"
-    },
-    {
-        question: "Why did the invisible man turn down the job offer?",
-        answer: "He couldn't see himself doing it!"
-    }
+    
 ];

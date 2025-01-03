@@ -29,7 +29,7 @@ function createFaqItem(item, index) {
             <h2 class="text-lg font-medium text-gray-900">${item.question}</h2>
             <span class="faq-icon text-2xl text-purple-600">+</span>
         </div>
-        <div class="faq-answer bg-gray-50">
+        <div class="faq-answer bg-blue-100 dark:bg-purple-100">
             <p class="p-4 text-gray-600">${item.answer}</p>
         </div>
     `;
