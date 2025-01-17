@@ -1,375 +1,249 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Three.js with Tailwind</title>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
+<?php
+/**
+ * The template for displaying all pages.
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package Creasage
+ * @since 1.0.0
+ */
 
-    canvas {
-      display: block;
-    }
-  </style>
-</head>
-<body class="bg-gray-900 text-white">
+if (!defined("ABSPATH")) {
+  exit(); // Exit if accessed directly.
+} ?>
 
+<?php get_header(); ?>
 
-  <svg >
-    <path
-    d="M100 20
-      C 120 20, 140 35, 160 50
-      C 180 65, 180 85, 180 100
-      C 180 115, 180 135, 160 150
-      C 140 165, 120 180, 100 180
-      C 80 180, 60 165, 40 150
-      C 20 135, 20 115, 20 100
-      C 20 85, 20 65, 40 50
-      C 60 35, 80 20, 100 20
-      Z"
-    fill="none"
-    stroke={color}
-    strokeWidth="8"
-  />
+	<div class=" relative overflow-hidden w-full">
+  <div
+	class="floating-shape shape1 hidden sm:block absolute top-0 left-0 bg-blue-500 rounded-full w-10 h-10 animate-bounce">
+  </div>
+  <div
+	class="floating-shape shape2 hidden sm:block absolute top-10 right-0 bg-red-500 rounded-full w-12 h-12 animate-spin">
+  </div>
+  <div
+	class="floating-shape shape3 hidden sm:block absolute bottom-0 left-10 bg-green-500 rounded-full w-8 h-8 animate-ping">
+  </div>
+  <div
+	class="floating-shape shape4 hidden sm:block absolute bottom-10 right-10 bg-yellow-500 rounded-full w-16 h-16 animate-pulse">
+  </div>
+  </div>
+
+  <section class="w-full mx-auto pb-8">
+	<!-- Hero Section -->
+	<div class="bg-primary  dark:bg-primary  p-8 sm:p-16 lg:p-28 mb-8 flex flex-col justify-center items-center">
+	  <h1 class="text-3xl sm:text-4xl lg:text-5xl py-4 font-quicksand  text-white text-center font-bold mb-4"><?php the_title(); ?></h1>
+	  <p class="text-gray-200   text-base sm:text-lg lg:text-xl font-manrope text-center max-w-2xl">
+		<?php echo get_the_excerpt() ?>
+	  </p>
+	</div>
+
+	<!-- Main Content Grid -->
+	<div class="grid grid-cols-1 max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 lg:grid-cols-3 gap-6 lg:gap-8">
+	  <!-- Left Column -->
+	  <div class="lg:col-span-2">
+		<!-- Tabs -->
+		<div class="flex flex-wrap gap-2 mb-8">
+		  <button class="tab-btn tab-active px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-black text-sm sm:text-base" data-tab="description">Description</button>
+		  <button class="tab-btn px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-black bg-gray-100 text-sm sm:text-base" data-tab="cible">Cible</button>
+		  <button class="tab-btn px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-black bg-gray-100 text-sm sm:text-base" data-tab="avantages">Avantages et Bénéfices</button>
+		  <button class="tab-btn px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-black bg-gray-100 text-sm sm:text-base" data-tab="tarification">Tarification et Garantie</button>
+		</div>
+
+		<!-- Tab Content -->
+		<div id="description" class="tab-content">
+		  <?php 
+		  $description = get_field('description');
+		  
+		  if ($description) {
+			  echo $description;
+		  }
+		  ?>
+		</div>
+		<div id="cible" class="tab-content hidden">
+		  <?php 
+			$cible = get_field('cible');
+			
+			if ($cible) {
+				echo $cible;
+			}
+			?>
+		</div>
+		<div id="avantages" class="tab-content hidden">
+		  <?php 
+		  $avantages_et_benefices = get_field('avantages_et_benefices');
+		  
+		  if ($avantages_et_benefices) {
+			  echo $avantages_et_benefices;
+		  }
+		  ?>
+		</div>
+		<div id="tarification" class="tab-content hidden">
+		  <?php 
+			$tarification_et_garantie = get_field('tarification_et_garantie');
+			
+			if ($tarification_et_garantie) {
+				echo $tarification_et_garantie;
+			}
+			?>
+		</div>
+	  </div>
+
+	  <!-- Right Column - Course Card -->
+	  <div class="dark:bg-primary-bluea bg-[#E0F1FF] flex flex-col justify-center items-center p-4 sm:p-6 rounded-3xl h-fit">
+		<div class="bg-green-100 rounded-xl p-4 mb-6">
+		  <?php 
+		  if (has_post_thumbnail()) {
+			  the_post_thumbnail('full', ['class' => 'w-full', 'alt' => get_the_title()]);
+		  } else {
+			  echo '<img class="w-full" src="' . esc_url(get_stylesheet_directory_uri() . '/assets/images/course1.png') . '" alt="Course thumbnail">';
+		  }
+		  ?>
+		</div>
+		<h2 class="text-3xl sm:text-4xl font-bold mb-6">Détails Logistiques</h2>
+
+		<!-- Course Details -->
+		<div class="space-y-3 sm:space-y-4 mb-6">
+		  <div class="flex gap-4 justify-between items-start text-sm sm:text-base">
+			<div class="flex items-center gap-2">
+					 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+						   d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+					   </svg>
+					   <span>Durée:</span>
+
+			</div>
+			<span> <?php echo get_field("duree") ?> Semaines, <?php echo get_field("horaire") ?></span>
+
+		  </div>
+		  <div class="flex justify-between items-center text-sm sm:text-base">
+			<div class="flex items-center gap-2">
+			  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+				  d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+			  </svg>
+			  <span>Langue de formation:</span>
+			</div>
+			<span><?php echo get_field("langue_de_formation") ?></span>
+
+		  </div>
+		  <div class="flex justify-between items-center text-sm sm:text-base">
+			<div class="flex items-center gap-2">
+			  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+				  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+			  </svg>
+			  <span>Nombre de places maximal:</span>
+			</div>
+			<span><?php echo get_field("nombre_de_places_maximal") ?></span>
+
+		  </div>
+		  <div class="flex justify-between items-center text-sm sm:text-base">
+			<div class="flex items-center gap-2">
+			  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+				  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+			  </svg>
+			  <span>Dates:</span>
+			</div>
+			<span><?php echo get_field("dates") ?></span>
+
+		  </div>
+		  <div class="flex justify-between items-center text-sm sm:text-base">
+			<div class="flex items-center gap-2">
+			  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+				  d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+			  </svg>
+			  <span>Format:</span>
+			</div>
+			<span><?php echo get_field("format") ?></span>
+
+		  </div>
+		  <div class="flex justify-between items-start gap-4 text-sm sm:text-base">
+			<div class="flex items-center gap-4">
+			  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+				  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+			  </svg>
+			  <span>Lieu:</span>
+			</div>
+			<span><?php echo get_field("lieu") ?></span>
+
+		  </div>
+		</div>
+
+		<!-- Add to Cart Button -->
+		<?php if ( !is_user_logged_in() ) : ?>
+			<a href="<?php echo home_url('inscription'); ?>" class="w-full bg-primary text-white py-3 sm:py-4 rounded-xl hover:bg-blue-900 transition-colors text-sm sm:text-base btns text-center">
+				Inscription
+			</a>
+		<?php else : ?>
+			<button class="w-full bg-primary text-white py-3 sm:py-4 rounded-xl text-center hover:bg-blue-900 transition-colors text-sm sm:text-base btns">
+				Inscription
+			</button>
+		<?php endif; ?>
+
+	  </div>
+	</div>
+  </section>
   
-  <StarComponent
-    d="M100 60 L100 140 M60 100 L140 100
-       M71 71 L129 129 M71 129 L129 71"
-    stroke={color}
-    strokeWidth="12"
-    strokeLinecap="round"
-  />
+  <?php 
+	get_template_part('template-parts/sections/section-faq');
+	?>
   
-  <circle
-    cx="100"
-    cy="100"
-    r="4"
-    fill={color}
-  />
-  </svg>
- <!-- vision 1 Section-->
- <section
- class="relative bg-gradient-to-br from-gray-100 to-purple-100 dark:from-[#090a1c] dark:to-gray-950 md:py-[160px] py-[100px] z-30 font-quicksand award-section"
->
- <div class="w-full md:h-[200vh] ml-auto sm:pl-8 pl-4 px-4 sm:px-0 relative">
-   <!-- Flex Container: Adjusts layout based on screen size -->
-   <div
-     class="flex xl:gap-[150px] gap-[30px] sticky md:items-start items-center top-[300px] overflow-hidden justify-between flex-col md:flex-row"
-   >
-     <!-- Left Side Content -->
-     <div class="flex-none w-full max-w-md award-content">
-       <div class="flex flex-col md:items-start items-center">
-         <div class="subhead font-manrope">
-           <img src="./assets/images/Frame.png" class="w-4 h-4" alt="" />
-           <h4
-             class="section-label text-blue-500 font-semibold text-sm uppercase tracking-wider"
-           >
-             OUR VISION
-           </h4>
-         </div>
-         <h1 class="text-4xl sm:text-start text-center font-bold mt-6 mb-4">
-           Awards That Define Our Excellence.
-         </h1>
-         <p class="text-gray-400 sm:text-start text-center text-xl mb-8">
-           Dive into a world of learning with a diverse & extensive range
-           of tech courses designed to cater to every interest.
-         </p>
-         <button
-           class="bg-black dark:bg-primary   text-white px-8 py-4 rounded-full font-semibold pointer-events-auto hover:bg-blue-800 transition-colors"
-         >
-           Discover Courses
-         </button>
-       </div>
-     </div>
+<!--logosss-->
+	<section 
+	class="bg-gradient-to-br overflow-x-hidden bg-white dark:to-primary dark:from-primary-blue text-black dark:text-white relative z-30 py-12 vision-section">
+	<div class="container flex flex-col justify-center items-center gap-[10px] mx-auto px-8">
+		  <p class="text-center mb-8 text-2xl font-quicksand text-primary dark:text-white font-medium">Contact et Support
+			Pour toute question, n’hésitez pas à nous contacter :</p>
+		  <div class="grid grid-cols-2 gap-6 mt-4">
+	
+			  <!-- Guarantee Card -->
+			  <div class="p-8 border-r fill-black dark:fill-white border-black dark:border-gray-200 flex flex-col items-center text-center transition-colors duration-300">
+				
+				  <svg class="w-12 h-12  mb-4"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  version="1.1" id="Capa_1" viewBox="0 0 473.806 473.806" xml:space="preserve">
+					<g>
+					  <g>
+						<path d="M374.456,293.506c-9.7-10.1-21.4-15.5-33.8-15.5c-12.3,0-24.1,5.3-34.2,15.4l-31.6,31.5c-2.6-1.4-5.2-2.7-7.7-4    c-3.6-1.8-7-3.5-9.9-5.3c-29.6-18.8-56.5-43.3-82.3-75c-12.5-15.8-20.9-29.1-27-42.6c8.2-7.5,15.8-15.3,23.2-22.8    c2.8-2.8,5.6-5.7,8.4-8.5c21-21,21-48.2,0-69.2l-27.3-27.3c-3.1-3.1-6.3-6.3-9.3-9.5c-6-6.2-12.3-12.6-18.8-18.6    c-9.7-9.6-21.3-14.7-33.5-14.7s-24,5.1-34,14.7c-0.1,0.1-0.1,0.1-0.2,0.2l-34,34.3c-12.8,12.8-20.1,28.4-21.7,46.5    c-2.4,29.2,6.2,56.4,12.8,74.2c16.2,43.7,40.4,84.2,76.5,127.6c43.8,52.3,96.5,93.6,156.7,122.7c23,10.9,53.7,23.8,88,26    c2.1,0.1,4.3,0.2,6.3,0.2c23.1,0,42.5-8.3,57.7-24.8c0.1-0.2,0.3-0.3,0.4-0.5c5.2-6.3,11.2-12,17.5-18.1c4.3-4.1,8.7-8.4,13-12.9    c9.9-10.3,15.1-22.3,15.1-34.6c0-12.4-5.3-24.3-15.4-34.3L374.456,293.506z M410.256,398.806    C410.156,398.806,410.156,398.906,410.256,398.806c-3.9,4.2-7.9,8-12.2,12.2c-6.5,6.2-13.1,12.7-19.3,20    c-10.1,10.8-22,15.9-37.6,15.9c-1.5,0-3.1,0-4.6-0.1c-29.7-1.9-57.3-13.5-78-23.4c-56.6-27.4-106.3-66.3-147.6-115.6    c-34.1-41.1-56.9-79.1-72-119.9c-9.3-24.9-12.7-44.3-11.2-62.6c1-11.7,5.5-21.4,13.8-29.7l34.1-34.1c4.9-4.6,10.1-7.1,15.2-7.1    c6.3,0,11.4,3.8,14.6,7c0.1,0.1,0.2,0.2,0.3,0.3c6.1,5.7,11.9,11.6,18,17.9c3.1,3.2,6.3,6.4,9.5,9.7l27.3,27.3    c10.6,10.6,10.6,20.4,0,31c-2.9,2.9-5.7,5.8-8.6,8.6c-8.4,8.6-16.4,16.6-25.1,24.4c-0.2,0.2-0.4,0.3-0.5,0.5    c-8.6,8.6-7,17-5.2,22.7c0.1,0.3,0.2,0.6,0.3,0.9c7.1,17.2,17.1,33.4,32.3,52.7l0.1,0.1c27.6,34,56.7,60.5,88.8,80.8    c4.1,2.6,8.3,4.7,12.3,6.7c3.6,1.8,7,3.5,9.9,5.3c0.4,0.2,0.8,0.5,1.2,0.7c3.4,1.7,6.6,2.5,9.9,2.5c8.3,0,13.5-5.2,15.2-6.9    l34.2-34.2c3.4-3.4,8.8-7.5,15.1-7.5c6.2,0,11.3,3.9,14.4,7.3c0.1,0.1,0.1,0.1,0.2,0.2l55.1,55.1    C420.456,377.706,420.456,388.206,410.256,398.806z"/>
+						<path d="M256.056,112.706c26.2,4.4,50,16.8,69,35.8s31.3,42.8,35.8,69c1.1,6.6,6.8,11.2,13.3,11.2c0.8,0,1.5-0.1,2.3-0.2    c7.4-1.2,12.3-8.2,11.1-15.6c-5.4-31.7-20.4-60.6-43.3-83.5s-51.8-37.9-83.5-43.3c-7.4-1.2-14.3,3.7-15.6,11    S248.656,111.506,256.056,112.706z"/>
+						<path d="M473.256,209.006c-8.9-52.2-33.5-99.7-71.3-137.5s-85.3-62.4-137.5-71.3c-7.3-1.3-14.2,3.7-15.5,11    c-1.2,7.4,3.7,14.3,11.1,15.6c46.6,7.9,89.1,30,122.9,63.7c33.8,33.8,55.8,76.3,63.7,122.9c1.1,6.6,6.8,11.2,13.3,11.2    c0.8,0,1.5-0.1,2.3-0.2C469.556,223.306,474.556,216.306,473.256,209.006z"/>
+					  </g>
+					</g>
+					</svg>
+				  <h3 class="text-xl font-semibold text-gray-800 font-manrope dark:text-gray-100 mb-2">Téléphone :  </h3>
+				  <p class="text-gray-600 dark:text-gray-200 text-base">+212 6XXXX XX</p>
+			  </div>
+			   
+			  <!-- Customer Service Card -->
+			  <div class=" fill-black dark:fill-white rounded-lg p-8 flex flex-col items-center text-center ">
+				
+				  <svg class="w-12 h-12  mb-4"  stroke="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  version="1.1" id="Capa_1" viewBox="0 0 483.3 483.3" xml:space="preserve">
+					<g>
+					  <g>
+						<path d="M424.3,57.75H59.1c-32.6,0-59.1,26.5-59.1,59.1v249.6c0,32.6,26.5,59.1,59.1,59.1h365.1c32.6,0,59.1-26.5,59.1-59.1    v-249.5C483.4,84.35,456.9,57.75,424.3,57.75z M456.4,366.45c0,17.7-14.4,32.1-32.1,32.1H59.1c-17.7,0-32.1-14.4-32.1-32.1v-249.5    c0-17.7,14.4-32.1,32.1-32.1h365.1c17.7,0,32.1,14.4,32.1,32.1v249.5H456.4z"/>
+						<path d="M304.8,238.55l118.2-106c5.5-5,6-13.5,1-19.1c-5-5.5-13.5-6-19.1-1l-163,146.3l-31.8-28.4c-0.1-0.1-0.2-0.2-0.2-0.3    c-0.7-0.7-1.4-1.3-2.2-1.9L78.3,112.35c-5.6-5-14.1-4.5-19.1,1.1c-5,5.6-4.5,14.1,1.1,19.1l119.6,106.9L60.8,350.95    c-5.4,5.1-5.7,13.6-0.6,19.1c2.7,2.8,6.3,4.3,9.9,4.3c3.3,0,6.6-1.2,9.2-3.6l120.9-113.1l32.8,29.3c2.6,2.3,5.8,3.4,9,3.4    c3.2,0,6.5-1.2,9-3.5l33.7-30.2l120.2,114.2c2.6,2.5,6,3.7,9.3,3.7c3.6,0,7.1-1.4,9.8-4.2c5.1-5.4,4.9-14-0.5-19.1L304.8,238.55z"/>
+					  </g>
+					</g>
+					</svg>
+				  <h3 class="text-xl font-semibold font-manrope text-gray-800 dark:text-gray-100 mb-2">Email :</h3>
+				  <p class="text-gray-600 dark:text-gray-200  text-base">support@formationcontentu.com</p>
+			  </div>
+		  </div>
+<a 
+			  href="./login.html" 
+			  class="bg-primary mt-[30px] text-white visited:text-white px-5 py-3 rounded-full"
+		  >
+			  Ne manquez pas cette opportunité de devenir un expert en création de contenu
+		  </a>
 
-     <!-- Cards Section -->
-     <div class="max-w-5xl w-full award-c">
-       <div
-         class="flex flex-wrap md:flex-row flex-col md:itemsstart items-center md:flex-nowrap gap-8 justify-start overflow-hidden"
-       >
-         <!-- Card 1 -->
-         <div
-           class="sm:w-[518px] w-none sm:min-h-[454px] min-h-full  flex-shrink-0 bg-primary text-white shadow-md shadow-primary rounded-2xl award-card flex flex-col justify-center items-center z-10  py-14 px-10 one"
-         >
-           <div class="">
-             <svg
-               xmlns="http://www.w3.org/2000/svg"
-               width="121"
-               height="138"
-               viewBox="0 0 121 138"
-               fill="none"
-             >
-               <script
-                 xmlns=""
-                 src="chrome-extension://hoklmmgfnpapgjgcpechhaamimifchmp/frame_ant/frame_ant.js"
-               />
-               <path
-                 d="M64.8139 2.13814L120.014 34.0143V97.7687C120.014 100.803 118.396 103.606 115.768 105.123L95.5268 116.812L84.0437 109.946V118.54C84.0437 121.574 82.4255 124.378 79.7983 125.895L60.5672 137L41.5914 126.042C38.9642 124.525 37.3458 121.722 37.3458 118.688V109.946L25.6075 116.812L5.3657 105.123C2.7385 103.606 1.12012 100.803 1.12012 97.7687V34.0143L56.3206 2.13814C58.9481 0.620623 62.1863 0.62062 64.8139 2.13814Z"
-                 fill="#0080FF"
-               />
-               <path
-                 d="M120.014 34.0143L64.8143 2.13814C62.1863 0.62062 58.9481 0.620623 56.3206 2.13814L1.12012 34.0143M120.014 34.0143V97.7687C120.014 100.803 118.396 103.606 115.768 105.123L95.5268 116.812M120.014 34.0143L95.5268 48.1551M1.12012 34.0143V97.7687C1.12012 100.803 2.7385 103.606 5.3657 105.123L25.6075 116.812M1.12012 34.0143L25.6075 48.1551M95.5268 116.812V48.1551M95.5268 116.812L84.0437 109.946M95.5268 48.1551L60.5672 28.2716M60.5672 137L79.7983 125.895C82.4255 124.378 84.0437 121.574 84.0437 118.54V109.946M60.5672 137V109.946M60.5672 137L41.5914 126.042C38.9642 124.525 37.3458 121.722 37.3458 118.688V109.946M84.0437 109.946V95.142M60.5672 109.946L84.0437 95.142M60.5672 109.946L37.3458 95.142M37.3458 109.946L25.6075 116.812M37.3458 109.946V95.142M25.6075 116.812V48.1551M25.6075 48.1551L60.5672 28.2716M60.5672 28.2716V68.3429V81.6149M60.5672 81.6149L84.0437 95.142M60.5672 81.6149L37.3458 95.142"
-                 stroke="white"
-                 stroke-width="0.906667"
-                 stroke-linecap="round"
-                 stroke-linejoin="round"
-               />
-               <path
-                 d="M60.5304 28.1998L25.6357 48.063L1.29883 33.9261L58.0251 1.35769C59.2778 0.820873 62.7851 0.820848 64.6462 2.25243C66.5072 3.68401 102.165 24.084 119.762 34.105L95.6041 48.063L60.5304 28.1998Z"
-                 fill="#04193F"
-                 stroke="white"
-                 stroke-opacity="0.12"
-                 stroke-width="0.906667"
-               />
-             </svg>
-           </div>
-           <h3 class="text-xl mt-8 font-semibold">
-             Class Mentorship Program
-           </h3>
-           <div
-             class="border border-primary-dark h-[1px] w-full my-5"
-           ></div>
-           <p class="text-center">
-             The Class Mentorship Program is designed to provide students
-             with personalized guidance, academic support, and career
-             development to enhance their learning.
-           </p>
-         </div>
+	  </div>
+	</section>
 
-         <!-- Card 2 -->
-         <div
-           class="sm:w-[518px] w-none sm:min-h-[454px] min-h-full flex-shrink-0 bg-primary text-white shadow-md shadow-primary rounded-2xl award-card flex flex-col justify-center items-center z-10  py-14 px-10 two"
-         >
-           <div class="">
-             <svg
-               xmlns="http://www.w3.org/2000/svg"
-               width="121"
-               height="138"
-               viewBox="0 0 121 138"
-               fill="none"
-             >
-               <script
-                 xmlns=""
-                 src="chrome-extension://hoklmmgfnpapgjgcpechhaamimifchmp/frame_ant/frame_ant.js"
-               />
-               <path
-                 d="M64.8139 2.13814L120.014 34.0143V97.7687C120.014 100.803 118.396 103.606 115.768 105.123L95.5268 116.812L84.0437 109.946V118.54C84.0437 121.574 82.4255 124.378 79.7983 125.895L60.5672 137L41.5914 126.042C38.9642 124.525 37.3458 121.722 37.3458 118.688V109.946L25.6075 116.812L5.3657 105.123C2.7385 103.606 1.12012 100.803 1.12012 97.7687V34.0143L56.3206 2.13814C58.9481 0.620623 62.1863 0.62062 64.8139 2.13814Z"
-                 fill="#0080FF"
-               />
-               <path
-                 d="M120.014 34.0143L64.8143 2.13814C62.1863 0.62062 58.9481 0.620623 56.3206 2.13814L1.12012 34.0143M120.014 34.0143V97.7687C120.014 100.803 118.396 103.606 115.768 105.123L95.5268 116.812M120.014 34.0143L95.5268 48.1551M1.12012 34.0143V97.7687C1.12012 100.803 2.7385 103.606 5.3657 105.123L25.6075 116.812M1.12012 34.0143L25.6075 48.1551M95.5268 116.812V48.1551M95.5268 116.812L84.0437 109.946M95.5268 48.1551L60.5672 28.2716M60.5672 137L79.7983 125.895C82.4255 124.378 84.0437 121.574 84.0437 118.54V109.946M60.5672 137V109.946M60.5672 137L41.5914 126.042C38.9642 124.525 37.3458 121.722 37.3458 118.688V109.946M84.0437 109.946V95.142M60.5672 109.946L84.0437 95.142M60.5672 109.946L37.3458 95.142M37.3458 109.946L25.6075 116.812M37.3458 109.946V95.142M25.6075 116.812V48.1551M25.6075 48.1551L60.5672 28.2716M60.5672 28.2716V68.3429V81.6149M60.5672 81.6149L84.0437 95.142M60.5672 81.6149L37.3458 95.142"
-                 stroke="white"
-                 stroke-width="0.906667"
-                 stroke-linecap="round"
-                 stroke-linejoin="round"
-               />
-               <path
-                 d="M60.5304 28.1998L25.6357 48.063L1.29883 33.9261L58.0251 1.35769C59.2778 0.820873 62.7851 0.820848 64.6462 2.25243C66.5072 3.68401 102.165 24.084 119.762 34.105L95.6041 48.063L60.5304 28.1998Z"
-                 fill="#04193F"
-                 stroke="white"
-                 stroke-opacity="0.12"
-                 stroke-width="0.906667"
-               />
-             </svg>
-           </div>
-           <h3 class="text-xl mt-8 font-semibold">
-             Class Mentorship Program
-           </h3>
-           <div
-             class="border border-primary-dark h-[1px] w-full my-5"
-           ></div>
-           <p class="text-center">
-             The Class Mentorship Program is designed to provide students
-             with personalized guidance, academic support, and career
-             development to enhance their learning.
-           </p>
-         </div>
-
-         <!-- Card 3 -->
-         <div
-           class="sm:w-[518px] w-none sm:min-h-[454px] min-h-full flex-shrink-0 bg-primary text-white shadow-md shadow-primary rounded-2xl award-card flex flex-col justify-center items-center z-10  py-14 px-10 three"
-         >
-           <div class="">
-             <svg
-               xmlns="http://www.w3.org/2000/svg"
-               width="121"
-               height="138"
-               viewBox="0 0 121 138"
-               fill="none"
-             >
-               <script
-                 xmlns=""
-                 src="chrome-extension://hoklmmgfnpapgjgcpechhaamimifchmp/frame_ant/frame_ant.js"
-               />
-               <path
-                 d="M64.8139 2.13814L120.014 34.0143V97.7687C120.014 100.803 118.396 103.606 115.768 105.123L95.5268 116.812L84.0437 109.946V118.54C84.0437 121.574 82.4255 124.378 79.7983 125.895L60.5672 137L41.5914 126.042C38.9642 124.525 37.3458 121.722 37.3458 118.688V109.946L25.6075 116.812L5.3657 105.123C2.7385 103.606 1.12012 100.803 1.12012 97.7687V34.0143L56.3206 2.13814C58.9481 0.620623 62.1863 0.62062 64.8139 2.13814Z"
-                 fill="#0080FF"
-               />
-               <path
-                 d="M120.014 34.0143L64.8143 2.13814C62.1863 0.62062 58.9481 0.620623 56.3206 2.13814L1.12012 34.0143M120.014 34.0143V97.7687C120.014 100.803 118.396 103.606 115.768 105.123L95.5268 116.812M120.014 34.0143L95.5268 48.1551M1.12012 34.0143V97.7687C1.12012 100.803 2.7385 103.606 5.3657 105.123L25.6075 116.812M1.12012 34.0143L25.6075 48.1551M95.5268 116.812V48.1551M95.5268 116.812L84.0437 109.946M95.5268 48.1551L60.5672 28.2716M60.5672 137L79.7983 125.895C82.4255 124.378 84.0437 121.574 84.0437 118.54V109.946M60.5672 137V109.946M60.5672 137L41.5914 126.042C38.9642 124.525 37.3458 121.722 37.3458 118.688V109.946M84.0437 109.946V95.142M60.5672 109.946L84.0437 95.142M60.5672 109.946L37.3458 95.142M37.3458 109.946L25.6075 116.812M37.3458 109.946V95.142M25.6075 116.812V48.1551M25.6075 48.1551L60.5672 28.2716M60.5672 28.2716V68.3429V81.6149M60.5672 81.6149L84.0437 95.142M60.5672 81.6149L37.3458 95.142"
-                 stroke="white"
-                 stroke-width="0.906667"
-                 stroke-linecap="round"
-                 stroke-linejoin="round"
-               />
-               <path
-                 d="M60.5304 28.1998L25.6357 48.063L1.29883 33.9261L58.0251 1.35769C59.2778 0.820873 62.7851 0.820848 64.6462 2.25243C66.5072 3.68401 102.165 24.084 119.762 34.105L95.6041 48.063L60.5304 28.1998Z"
-                 fill="#04193F"
-                 stroke="white"
-                 stroke-opacity="0.12"
-                 stroke-width="0.906667"
-               />
-             </svg>
-           </div>
-           <h3 class="text-xl mt-8 font-semibold">
-             Class Mentorship Program
-           </h3>
-           <div
-             class="border border-primary-dark h-[1px] w-full my-5"
-           ></div>
-           <p class="text-center">
-             The Class Mentorship Program is designed to provide students
-             with personalized guidance, academic support, and career
-             development to enhance their learning.
-           </p>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
-</section>
-
-  <script>
-    // Initialize Three.js
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('threeCanvas'), antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-
-    // Add a cube
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
-    // Camera and controls
-    camera.position.z = 5;
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-
-    // Handle resizing
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-
-    // Animation loop
-    function animate() {
-      requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-      controls.update();
-      renderer.render(scene, camera);
-    }
-    animate();
-  </script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-<div class="flex flex-col justify-center items-center max-w-7xl mx-auto p-8 lg:grid-cols-3 gap-8">
-
-  <div class="w-full relative h-[500px]">
-      <img class="rounded-3xl w-full h-full bg-cover object-cover" src="./assets/images/servic2.avif" alt="">
-  </div>
-
-  <div class="border-t border-[#d1e0ff] mt-11 pt-10 ">
-      <h2 class="text-4xl font-quicksand font-bold mb-10">Pourquoi choisir notre accompagnement stratégique?
-      </h2>
-      <p class="text-gray-700 font-manrope dark:text-gray-100">
-          Notre accompagnement stratégique repose sur une analyse approfondie de vos besoins et une mise
-          en œuvre de solutions adaptées pour maximiser votre impact digital.
-      </p>
-
-  </div>
-  <div class=" ">
-      <h2 class="text-4xl font-quicksand font-bold mb-10">Ce que nous offrons</h2>
-      <p class="text-gray-700 font-manrope dark:text-gray-100 mb-6">
-          Notre accompagnement stratégique repose sur une analyse approfondie de vos besoins et une mise
-          en œuvre de solutions adaptées pour maximiser votre impact digital.
-      </p>
-      <!--logosss-->
-      <section
-          class="bg-gradient-to-br overflow-x-hidden bg-white dark:from-[#090a1c] dark:to-gray-950 text-black dark:text-white relative z-30 py-4 vision-section">
-          <div class=" mx-auto ">
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <!-- Delivery Card -->
-                  <div
-                      class="bg-[#EBF3F9] dark:bg-[#111827] rounded-lg p-8 flex flex-col items-center text-center hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors duration-300">
-                      <svg class="w-12 h-12 text-gray-800 dark:text-white mb-4" fill="none"
-                          stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                              d="M5 13l4 4L19 7"></path>
-                          <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5"></rect>
-                      </svg>
-                      <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">Livraison
-                          24H/48h</h3>
-                      <p class="text-gray-600 dark:text-gray-400 text-sm">Livraison à domicile partout au
-                          Maroc</p>
-                  </div>
-
-                  <!-- Payment Card -->
-                  <div
-                      class="bg-[#EBF3F9] dark:bg-[#111827] rounded-lg p-8 flex flex-col items-center text-center hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors duration-300">
-                      <svg class="w-12 h-12 text-gray-800 dark:text-white mb-4" fill="none"
-                          stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                              d="M3 10h18M7 15h.01M11 15h2M6 5h12a3 3 0 013 3v8a3 3 0 01-3 3H6a3 3 0 01-3-3V8a3 3 0 013-3z">
-                          </path>
-                      </svg>
-                      <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">Paiement</h3>
-                      <p class="text-gray-600 dark:text-gray-400 text-sm">Paiement à la livraison ou Virement
-                          BC</p>
-                  </div>
-
-                  <!-- Guarantee Card -->
-                  <div
-                      class="bg-[#EBF3F9] dark:bg-[#111827] rounded-lg p-8 flex flex-col items-center text-center hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors duration-300">
-                      <svg class="w-12 h-12 text-gray-800 dark:text-white mb-4" fill="none"
-                          stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                          </path>
-                      </svg>
-                      <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">Garantie</h3>
-                      <p class="text-gray-600 dark:text-gray-400 text-sm">Garantie 1 an pièces et main
-                          d'œuvre.<br>SAV +212666998384</p>
-                  </div>
-
-              </div>
-          </div>
-      </section>
-  </div>   
-  <div class="border-t border-[#d1e0ff] mt-11 pt-10 ">
-      <h2 class="text-4xl font-quicksand font-bold mb-10">Comment ca fonctionne
-      </h2>
-      <p class="text-gray-700 font-manrope dark:text-gray-100">
-          Notre accompagnement stratégique repose sur une analyse approfondie de vos besoins et une mise
-          en œuvre de solutions adaptées pour maximiser votre impact digital.
-      </p>
-
-  </div>
-</div>
+<?php get_footer(); ?>
