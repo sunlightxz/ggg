@@ -6,6 +6,7 @@
 /*  */
 html.dark {
     color-scheme: dark;
+    
 }
 
 body {
@@ -103,35 +104,22 @@ body {
 
 
 }
-
-/* scrolling*/
-
-/* Scrolling Container *//* Scrolling Container */
-.scrolling-container {
-  position: relative;
-  display: flex;
-  overflow: hidden;
-  user-select: none;
-  gap: 40px;
-  align-items: center;
-  }
-  
   .scrolling-wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
     display: flex;
-    flex-direction: row;
-
+    gap: 2rem;
   }
   /* Scrolling Text */
   .scrolling-text {
     display: flex;
     gap: 40px;
     white-space: nowrap;
-    animation: scroll 25s linear infinite;
+    animation: scroll 30s linear infinite;
   }
   
-  .scrolling-text span {
-    flex-shrink: 0;
-  }
+  
   
   /* Scroll Animation */
   @keyframes scroll {
@@ -143,14 +131,7 @@ body {
     }
   }
   
-  /* Duplicate Content Seamlessly */
-  .scrolling-text::after {
-    content: "";
-    display: block;
-    flex: none;
-    width: 100%;
-  }
-  
+
   /* Background Styling */
   .bgscroll {
     background: #1E40B1;
@@ -922,4 +903,6 @@ footer input::placeholder {
     inset: auto auto 30% 0;
     transform: skew(38deg, 7deg) rotateX(31deg) rotateY(0) rotateZ(34deg) translate(0);
 }
+
+
 
